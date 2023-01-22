@@ -8,7 +8,7 @@ class Client:
     def ajouterProduit(self, produit):
         self.produits.append(produit)
 
-    def facture(self):
+    def facture(self, path):
         text = "Client numéro " + self.numero + "\n\n             N° de produit  Qte      Prix  Total (tx)\n"
         j = 0
         qte = 0
@@ -30,10 +30,14 @@ class Client:
                    + "\nRabais : 0" \
                      "\nTotal : " + str(round(total_fac, 2))
 
-        new_file = "Client{}.txt".format(self.getNumero())
-        with open(new_file, "w") as file:
-            file.write(text)
-            print("Fichier {} cree !".format(new_file))
+
+        try:
+            new_file = "Client{}.txt".format(self.getNumero())
+            with open(path+"/"+new_file, "w") as file:
+                file.write(text)
+                print("Fichier {} cree !".format(new_file))
+        except(IOError, OSError) as why:
+            print(why)
 
     def getNumero(self):
         return self.numero
