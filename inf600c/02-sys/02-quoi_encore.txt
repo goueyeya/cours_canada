@@ -1,0 +1,15 @@
+oueg@workspace:/quetes/02-sys/02-quoi_encore$ ltrace ./quoi_encore 
+getegid()                                                                                                                                                              = 1169
+geteuid()                                                                                                                                                              = 1167
+setresgid(1169, 1169, 1169, 1169)                                                                                                                                      = 0
+setresuid(1167, 1167, 1167, 1167)                                                                                                                                      = 0
+system("/usr/bin/env echo Et puis quoi e"...Et puis quoi encore?
+ <no return ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                                                                                                                 = 0
++++ exited (status 0) +++
+
+on voit que on a env qui execute des commendes dans un environnements modifiés 
+on cree un fichier un echo qui cat flag.txt dans le home directory et on lui donne les permissions d'execution
+on modifie la variable PATH et on met notre home directory au debut pour qu'il aille chercher le echo 
+on retourne dans le dossier et on lance l'executable 
