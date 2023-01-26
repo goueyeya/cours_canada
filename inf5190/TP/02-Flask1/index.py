@@ -12,6 +12,12 @@ def formulaire():
 @app.route('/envoyer', methods=['POST'])
 def envoyer():
     if request.form['fnom']!= '' and request.form['fprenom']!= '':
+        log = "log{}.txt".format(request.form['fnom'])
+        data_cont = {"nom": request.form['fnom'],"prenom": request.form['fprenom'],
+                     "Language de programmation": request.form['fav_language'],"Langue Maternelle": request.form['langue'],}
+        with open("logs/"+log, "w") as file:
+            file.write(str(data_cont))
+            print("Fichier {} cree !".format(log))    
         return redirect('/merci')
     else:
         return redirect('/erreur')
@@ -23,3 +29,6 @@ def merci():
 @app.route('/erreur')
 def erreur():
     return render_template('erreur.html')
+
+if __name__ == '__main__':
+    app.run()
