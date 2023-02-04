@@ -1,0 +1,3 @@
+head peut_etre_*/* 1>&2
+
+Vulnérabilités : head n'est pas blaclister, c'est mieux de whitelister ; comme le résultat est envoyé vers /dev/null/, on redirige le fichier de sortie standard vers celui d'erreur qui lui est affiché

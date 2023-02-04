@@ -1,0 +1,6 @@
+on cree un fichier bin dans le home directory
+on creer un executable qui execute l'exectuable getflag
+on se positionne dans le home directory et on execute pedagagie
+dans vim on excute une commande en faisant :! et on appelle notre executable
+
+Vulnérabilités: les variables d'environnement PATH et PWD, le rbash qui execute seulement les commandes du PATH, le chemin relatif du path, pouvoir executer les commandes de vim
