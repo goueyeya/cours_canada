@@ -1,0 +1,6 @@
+1) pour rentrer dans le site : voir le code commentaire user = Tom pass = the cleaning guy
+2)pour avoir l'arme secrete : quand on clique sur une arme on voit un id.
+Cet id est codé en base64. Quand on le decode cela donne 1,2,3,etc.
+Le chiffre manquant est 4 donc en l'encode en b64 et cela donne NA==.
+On le met dans l'url et on trouve le flag.
+3) on va sur l'onget ou il y a un secret caché on recupere le bscuit et on le decode avec url decoder

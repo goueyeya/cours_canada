@@ -2,11 +2,9 @@
 {% block content %}
 
   {% if error %}
-
     <p>.{{ error }} Veuillez recommencer.</p>
   {% endif %}
 
-  <body>
       <div class="main-block">
         <h1>Inscription</h1>
         <form action="/envoyer" method="post" enctype="multipart/form-data">
@@ -30,9 +28,9 @@
           <div class="btn-block">
             <p>En cliquant sur S'inscrire, vous acceptez la <a href="">Politique sur la vie privée</a>.</p>
             <hr>
-            <button type="submit" href="/">S'inscrire</button>
+            <button type="submit">S'inscrire</button>
           </div>
         </form>
       </div>
-    </body>
-{% endblock %}
+
+{% end block %}

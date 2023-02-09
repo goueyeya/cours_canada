@@ -9,7 +9,7 @@ import uuid
 app = Flask(__name__)
 
 @app.route('/')
-def formulaire():
+def display_form():
     return render_template("form.html")
 
 @app.route('/envoyer', methods=['POST','GET'])
