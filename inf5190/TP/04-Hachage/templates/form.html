@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  {% if error %}
+
+    <p>.{{ error }} Veuillez recommencer.</p>
+  {% endif %}
+
+  <body>
+      <div class="main-block">
+        <h1>Inscription</h1>
+        <form action="/envoyer" method="post" enctype="multipart/form-data">
+          <hr>
+
+          <label id="icon" for="nom"><i class="fas fa-user"></i></label>
+          <input type="text" nom="nom" id="nom" placeholder="Nom" required/>
+
+          <label id="icon" for="prenom"><i class="fas fa-user"></i></label>
+          <input type="text" nom="prenom" id="prenom" placeholder="Prénom" required/>
+
+          <label id="icon" for="courriel"><i class="fas fa-envelope"></i></label>
+          <input type="text" nom="courriel" id="courriel" placeholder="Email" required/>
+
+          <label id="icon" for="mdp"><i class="fas fa-unlock-alt"></i></label>
+          <input type="mdp" nom="mdp" id="mdp" placeholder="Mot de passe" required/>
+
+          <label id="icon" for="mdpconf"><i class="fas fa-unlock-alt"></i></label>
+          <input type="mdpconf" nom="mdpconf" id="mdpconf" placeholder="Mot de passe" required/>
+          <hr>
+          <div class="btn-block">
+            <p>En cliquant sur S'inscrire, vous acceptez la <a href="">Politique sur la vie privée</a>.</p>
+            <hr>
+            <button type="submit" href="/">S'inscrire</button>
+          </div>
+        </form>
+      </div>
+    </body>
+{% endblock %}
