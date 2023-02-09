@@ -38,21 +38,22 @@ def add_album():
     try:
         with open("input.txt",'rt') as file:
             text = file.readlines()
-            for line in text:
-                line = line.replace('\n',"")
-                "on recupere les les valeurs du fichier en input"
-                nom, titre, annee = str(line).split("|")
+        file.close()
+        for line in text:
+            line = line.replace('\n',"")
+            "on recupere les les valeurs du fichier en input"
+            nom, titre, annee = str(line).split("|")
 
-                "on verifie que l'artiste existe ou non"
-                est_present = artist_exist(nom)
-                "si non on le creer"
-                if est_present is False:
-                    create_artiste(nom)
+            "on verifie que l'artiste existe ou non"
+            est_present = artist_exist(nom)
+            "si non on le creer"
+            if est_present is False:
+                create_artiste(nom)
 
-                "on creer l'album"
-                album = (titre, int(annee), random.choice(maisons_d), get_id_artiste(nom))
-                cursor.execute("insert into album (titre, annee, maison_disque_id, artiste_id) values(?, ?, ?, ?)", album)
-                co.commit()
+            "on creer l'album"
+            album = (titre, int(annee), random.choice(maisons_d), get_id_artiste(nom))
+            cursor.execute("insert into album (titre, annee, maison_disque_id, artiste_id) values(?, ?, ?, ?)", album)
+            co.commit()
 
     except(IOError, OSError) as why:
         print(why)
@@ -62,3 +63,4 @@ co = sqlite3.connect("musique.db")
 cursor = co.cursor()
 maisons_d = get_maisons()
 add_album()
+co.close()
