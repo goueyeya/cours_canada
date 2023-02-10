@@ -1,10 +1,10 @@
 create table utilisateur(
     id integer primary key,
-    nom varchar(35),
-    prenom varchar(35),
-    courriel varchar(50),
+    nom varchar(32),
+    prenom varchar(32),
+    courriel varchar(100),
     date_inscription date,
-    salt varchar(24),
-    mdp varchar(500)
+    salt varchar(32),
+    mdp varchar(128)
 );
 

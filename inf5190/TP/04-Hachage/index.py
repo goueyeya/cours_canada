@@ -31,19 +31,23 @@ def save_util():
         else:
             date = "datetime('now','localtime')"
             salt = uuid.uuid4().hex
-            mdp_hashed = hashlib.sha512(str(mdp+salt)).encode("utf-8").hexdigest()
+            mdp_hashed = hashlib.sha512(str(mdp + salt).encode("utf-8")).hexdigest()
 
             user = (nom, prenom, courriel, date, salt, mdp_hashed)
 
             co = sqlite3.connect("database/util.db")
 
-            script = "insert into utilisateur(nom, prenom, courriel, date, salt, mdp) values(?, ?, ?, ?, ?, ?)"
+            script = "insert into utilisateur(nom, prenom, courriel, date_inscription, salt, mdp) values(?, ?, ?, ?, ?, ?)"
+            cursor = co.cursor()
 
-            co.cursor(script, user)
+            cursor.execute(script, user)
             co.commit()
             co.close()
-            return redirect("/confirmation", nom = nom, prenom = prenom)
+            return render_template("conf.html", nom = nom, prenom = prenom)
 
 @app.route('/confirmation')
 def conf():
     return render_template("conf.html")
+
+if __name__ == '__main__':
+ app.run(debug=True)

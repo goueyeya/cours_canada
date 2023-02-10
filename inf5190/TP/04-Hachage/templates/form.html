@@ -11,19 +11,19 @@
           <hr>
 
           <label id="icon" for="nom"><i class="fas fa-user"></i></label>
-          <input type="text" nom="nom" id="nom" placeholder="Nom" required/>
+          <input type="text" name="nom" id="nom" placeholder="Nom" required/>
 
           <label id="icon" for="prenom"><i class="fas fa-user"></i></label>
-          <input type="text" nom="prenom" id="prenom" placeholder="Prénom" required/>
+          <input type="text" name="prenom" id="prenom" placeholder="Prénom" required/>
 
           <label id="icon" for="courriel"><i class="fas fa-envelope"></i></label>
-          <input type="text" nom="courriel" id="courriel" placeholder="Email" required/>
+          <input type="text" name="courriel" id="courriel" placeholder="Email" required/>
 
           <label id="icon" for="mdp"><i class="fas fa-unlock-alt"></i></label>
-          <input type="mdp" nom="mdp" id="mdp" placeholder="Mot de passe" required/>
+          <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" required/>
 
           <label id="icon" for="mdpconf"><i class="fas fa-unlock-alt"></i></label>
-          <input type="mdpconf" nom="mdpconf" id="mdpconf" placeholder="Mot de passe" required/>
+          <input type="password" name="mdpconf" id="mdpconf" placeholder="Mot de passe" required/>
           <hr>
           <div class="btn-block">
             <p>En cliquant sur S'inscrire, vous acceptez la <a href="">Politique sur la vie privée</a>.</p>
@@ -33,4 +33,4 @@
         </form>
       </div>
 
-{% end block %}
+{% endblock %}

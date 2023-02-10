@@ -1,8 +1,8 @@
-{% extends layout.html%}
+{% extends "layout.html" %}
 {% block content %}
 <main>
     <div>
-        <h4>Bonjour {{ nom }} {{ prenom }}</h4>
+        <h4>Bonjour {{ nom }} {{ prenom }}</h4>
         <p>Votre compte a été correctement créé.</p>
     </div>
 
@@ -10,4 +10,4 @@
         <p>Cliquez <a href="/">ici</a> pour revenir à l'accueil</p>
     </div>
 </main>
-{% end block %}
+{% endblock %}
