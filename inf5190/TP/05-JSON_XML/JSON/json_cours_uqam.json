@@ -1,0 +1,43 @@
+{
+    "cours":[{
+        "sigle" : "INF5190" ,
+        "groupe" : "602",
+        "trimestre" : 1,
+        "année" : 2023,
+        "nom_enseignant" : "Jacques Berger",
+        "note": "N/A" 
+    },
+    {
+        "sigle" : "INF5130",
+        "groupe" : "603",
+        "trimestre" : 1,
+        "année" : 2023,
+        "nom_enseignant" : "Matthieu Willems",
+        "note": "N/A" 
+    },
+    {
+        "sigle" : "INF600C",
+        "groupe" : "617",
+        "trimestre" : 1,
+        "année" : 2023,
+        "nom_enseignant" : "Peppos Petit-Clerc",
+        "note": "N/A" 
+    },
+    {
+        "sigle" : "INF5153",
+        "groupe" : "615",
+        "trimestre" : 1,
+        "année" : 2023,
+        "nom_enseignant" : "Jacques Berger",
+        "note": "N/A" 
+    },
+    {
+        "sigle" : "ANG2055",
+        "groupe" : "600",
+        "trimestre" : 1,
+        "année" : 2023,
+        "nom_enseignant" : "Dipiero Jaime",
+        "note": "N/A" 
+    }]
+
+}

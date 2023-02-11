@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<dossier type="medical">
+    <nom>Oueyeya</nom>
+    <prenom>Gaëtan</prenom>
+    <numero_assurance>OUG9985363728</numero_assurance>
+    <date_naissance>2003-08-20</date_naissance>
+    <medecin>
+        <nom>Marie</nom>
+        <prenom>Pierre</prenom>
+        <identifiant>P2312LS</identifiant>
+        <ville>Longueil</ville>
+    </medecin>
+    <visites>
+        <visite>
+            <date>2022-12-12</date>
+            <sujet>Gastro</sujet>
+            <description>Prescrire du smecta</description>
+        </visite>
+        <visite>
+            <date>2023-01-12</date>
+            <sujet>Entorse</sujet>
+            <description>Entorse légère. porter une atelle pendant 3 semaines.</description>
+        </visite>
+    </visites>
+</dossier>

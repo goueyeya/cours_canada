@@ -1,0 +1,23 @@
+{
+    "nom": "Oueyeya",
+    "prénom": "Gaëtan", 
+    "numéro d'assurance maladie" : "OUG9985363728",
+    "date de naissance" : "2003-08-20",
+    "médecin" :[{
+        "nom" : "Marie", "prénom": "Pierre", "identifiant" :"P2312LS" , "ville": "Longueil"
+    }] ,
+    "visites" : [
+        {
+            "date" : "2022-12-12",
+            "sujet de la visite": "Gastro",
+             "decription": "Prescrire du smecta."
+        },
+        {
+            "date" : "2023-01-12",
+            "sujet de la visite": "Entorse",
+             "description": "Entorse légère. porter une atelle pendant 3 semaines."
+        }
+    ]
+        
+    
+}
