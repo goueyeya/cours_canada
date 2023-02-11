@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 
-  {% if error %}
-    <p>.{{ error }} Veuillez recommencer.</p>
+  {% if error_message %}
+    <div class="error"><h4>{{ error_message }} Veuillez recommencer.</h4></div>
   {% endif %}
 
+<main>
       <div class="main-block">
         <h1>Inscription</h1>
         <form action="/envoyer" method="post" enctype="multipart/form-data">
@@ -32,5 +33,5 @@
           </div>
         </form>
       </div>
-
+</main>
 {% endblock %}
