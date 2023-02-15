@@ -43,7 +43,7 @@ def save_util():
         elif not re.search(r"[0-9]", mdp):
             return render_template("form.html", error_message="Le mot de passe doit contenir au moins un chiffre.")
 
-        elif not re.search(r"[.,?:!;'/-]", mdp):
+        elif not re.search(r"""[.,?:!;'/&$@"-]""", mdp):
             return render_template("form.html",
                                    error_message="Le mot de passe doit contenir au moins un caractère de ponctuation.")
         else:
