@@ -1,3 +1,4 @@
+"""
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -19,8 +20,11 @@ def index():
 @app.route("/article/<identifiant>", methods=["GET"])
 def article():
 
+
 @app.route("/admin",methods=["GET"])
 def admin():
+
+
 
 @app.route("/admin-nouveau",methods=["GET"])
 def admin_nouveau():
@@ -28,3 +32,5 @@ def admin_nouveau():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+"""
