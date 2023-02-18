@@ -77,16 +77,16 @@ Nom : \underline{Gaëtan} \hfill{}Code permanent : \underline{OUEG82330306}
     \hline
 \end{tabular}
 
+\bigskip
 
-
-
+$NZ(Tab) = 1 + 1 + 0 + 0 + 0 + 1 + 1 + 0 = 4$
 
 
 \item 
- 
+ Le pire cas de cet algorithme correspond à un tableau $Tab$ contenant uniquement des éléments non nuls, car les conditions des si sont toujours vérifiées. Ainsi, la valeur de $NZ(Tab)$ dans le pire cas est $\frac{n(n+1)}{2}$, où n est la taille du tableau.
 
 \item 
-
+Le meilleur cas de cet algorithme correspond à un tableau $Tab$ ne contenant que des zéros, car les conditions du si ne sont jamais vérifiées. Ainsi, la valeur de $NZ(Tab)$ dans le meilleur cas est 0.
 
 
 \item 
@@ -95,9 +95,63 @@ Nom : \underline{Gaëtan} \hfill{}Code permanent : \underline{OUEG82330306}
 
      \item 
      
-     \item 
+     \begin{equation*}
+          T(n) = c_1 + c_9 + c_2(n+1)+ \sum_{i=1}^{n}\left(c_3(i+1)+(c_4+c_8)i\sum_{j=1}^{i}(i-j+1)c_5+(i-j)(c_6+c_7)\right)
+     \end{equation*}
+        
+         \begin{multline*}
+         = c_1 + c_9 + c_2(n+1)+ c_3\cdot \left(\frac{n(n+1)}{2}+n\right)+(c_4+c_8)\left(\frac{n(n+1)}{2}+n\right)+\\
+         \sum_{i=1}^{n}\left(i(i+1)c_5-\frac{i(i+1)}{2}c_5-i^{2}(c_6+c_7)-\frac{i(i+1)}{2}(c_6+c_7) \right)
+         \end{multline*}
 
-\end{enumerate}
+         \begin{multline*}
+           = c_1 + c_9 + c_2(n+1)+ c_3n+ (c_3+c_4+c_8)\left(\frac{n(n+1)}{2}\right)+\\
+           \sum_{i=1}^{n}i^{2}(c_5+c_6+c_7)+c_5i-\frac{i(i+1)}{2}(c_5+c_6+c_7) 
+         \end{multline*}
+         
+         \begin{multline*}
+            = c_1 + c_9 + c_2(n+1)+ c_3n+ (c_3+c_4+c_8)\left(\frac{n(n+1)}{2}\right)+ (c_5+c_6+c_7)\left(\frac{n(n+1)(2n+1)}{6}\right)+\\
+            c_5\left(\frac{n(n+1)}{2}\right)-\frac{c_5+c_6+c_7}{2}\left(\frac{n(n+1)(2n+1)}{6}\right)-\left(\frac{n(n+1)}{2}\right)\frac{c_5+c_6+c_7}{2}
+         \end{multline*}
+
+        \begin{multline*}
+            = c_1 + c_9 + c_2(n+1)+ c_3n+ (c_3+c_4+c_8)\left(\frac{n(n+1)}{2}\right)+ \\
+            \frac{(c_5+c_6+c_7)}{2}\left(\frac{n(n+1)(2n+1)}{6}\right)+            \frac{(c_5-c_6-c_7)}{4}\left(\frac{n(n+1)}{2}\right)
+         \end{multline*}
+
+        \begin{multline*}
+            = c_1 + c_9 + c_2(n+1)+ c_3n+ \left(c_3+c_4+c_8+\frac{(c_5-c_6-c_7)}{4}\right)\left(\frac{n(n+1)}{2}\right)+ \\
+            \frac{(c_5+c_6+c_7)}{2}\left(\frac{(n^{2}+n)(2n+1)}{6}\right)
+         \end{multline*}
+        \begin{multline*}
+            = c_1 + c_9 + c_2(n+1)+ c_3n+ \left(\frac{c_3+c_4+c_8}{2}+\frac{(c_5-c_6-c_7)}{8}\right)(n^{2}n)+ \\
+            \frac{(c_5+c_6+c_7)}{12}(2n^{3}+3n^{2}+n)
+         \end{multline*}
+        \begin{multline*}
+            = c_1 + c_9 + c_2(n+1)+ c_3n+ \left(\frac{4c_3+4c_4+4c_8+c_5-c_6-c_7}{8}\right)(n^{2}n)+ \\
+            \frac{(c_5+c_6+c_7)}{12}(2n^{3}+3n^{2}+n)
+         \end{multline*}
+        \begin{multline*}
+            = \frac{(c_5+c_6+c_7)}{6}n3+\frac{(c_5+c_6+c_7)}{12}n^{2}+\left(\frac{4c_3+4c_4+4c_8+c_5-c_6-c_7}{8}\right)n^{2}\\
+            +\left(\frac{4c_3+4c_4+4c_8+c_5-c_6-c_7}{8}\right)n+\frac{(c_5+c_6+c_7)}{12}n+c_3n+c_2n+c_2+c_1 + c_9  
+         \end{multline*}
+        \begin{multline*}
+            = \frac{(c_5+c_6+c_7)}{6}n3+\frac{(12c_3+12c_4+12c_8+5c_5-c_6-c_7)}{24}n^{2}+\\
+            +\left(\frac{4c_3+4c_4+4c_8+c_5-c_6-c_7}{8}\right)n+\frac{(12c_3+12c_2+c_5+c_6+c_7)}{12}n++c_2+c_1 + c_9  
+         \end{multline*}
+        \begin{multline*}
+            = \frac{(c_5+c_6+c_7)}{6}n3+\frac{(12c_3+12c_4+12c_8+5c_5-c_6-c_7)}{24}n^{2}+\\
+            +\left(\frac{36c_3+24c_2+12c_4+12c_8+5c_5-c_6-c_7}{24}\right)n+c_2+c_1 + c_9  
+         \end{multline*}
+        
+     \item 
+     On doit supprimer $c_7$ donc :
+             \begin{multline*}
+            = \frac{(c_5+c_6)}{6}n3+\frac{(12c_3+12c_4+12c_8+5c_5-c_6)}{24}n^{2}+\\
+            +\left(\frac{36c_3+24c_2+12c_4+12c_8+5c_5-c_6}{24}\right)n+c_2+c_1 + c_9  
+         \end{multline*}
+
+    \end{enumerate}
 
 \end{enumerate}
 
@@ -109,17 +163,70 @@ Nom : \underline{Gaëtan} \hfill{}Code permanent : \underline{OUEG82330306}
 
      \item $$ \sum_{i=2}^{n-1} \sum_{j=3}^{i+3}\left( 36j^2+24j+18i \right)  \textrm{ pour tout } n \in \mathbb{N}, n\geq 3.$$
      
+     \begin{align*}
+        &=\sum_{i=2}^{n-1} \left[ \sum_{j=3}^{i+3}\left( 36j^2+24j+18i \right) \right]\\
+        &=\sum_{i=2}^{n-1} \left[ \sum_{j=3}^{i+3}\left( 36j^2 \right) +\sum_{j=3}^{i+3}\left( 24j \right) +\sum_{j=3}^{i+3}\left( 18i \right) \right]\\
+        &=\sum_{i=2}^{n-1} \left[ 36\sum_{j=3}^{i+3}j^2 + 24\sum_{j=3}^{i+3}j + 18i\sum_{j=3}^{i+3} 1 \right]\\
+        &=\sum_{i=2}^{n-1} \left[ 36\left(\sum_{j=1}^{i+3}j^2 -(2^{2}+2^{1})\right)+ 24\left(\sum_{j=1}^{i+3}j - (2+1)\right) + 18i(i+3-3+1) \right]\\
+        &=\sum_{i=2}^{n-1} \left[ 36\left(\frac{(i+3)(i+4)(2(i+3)+1)}{6} -5\right)+ 24\left(\frac{(i+3)(i+4)}{2} - 3\right) + 18i^{2} +18i \right]\\
+        &=\sum_{i=2}^{n-1} \left[ 36\left(\frac{(i^{2}+7i+12)(2i+7)}{6} -5\right)+ 24\left(\frac{(i^{2}+7i+12)}{2} - 3\right) + 18i^{2} +18i \right]\\
+        &=\sum_{i=2}^{n-1} \left[ 36\left(\frac{2i^{3}+21i^{2}+73i}{6} + 9\right)+ 24\left(\frac{i^{2}+7i}{2} + 3\right) + 18i^{2} +18i \right]\\
+        &=\sum_{i=2}^{n-1} \left[ 6\left(2i^{3}+21i^{2}+73i \right)+ 9\times 36 + 12\left(i^{2}+7i \right)+ 3\times 24 + 18i^{2} +18i \right]\\
+        &=\sum_{i=2}^{n-1} \left[ 12i^{3}+126i^{2}+438i+ 324 + 12i^{2}+84i+72+18i^{2} +18i \right]\\
+        &=\sum_{i=2}^{n-1}12i^{3}+156i^{2}+540i+ 396\\   
+        &=\sum_{i=2}^{n-1}12i^{3}+\sum_{i=2}^{n-1}156i^{2}+\sum_{i=2}^{n-1}540i+ \sum_{i=2}^{n-1}396\\  
+        &=12\sum_{i=2}^{n-1}i^{3}+156\sum_{i=2}^{n-1}i^{2}+540\sum_{i=2}^{n-1}i+ 396(n-1-2+1)\\ 
+        &=12\sum_{i=2}^{n-1}i^{3}+156\sum_{i=2}^{n-1}i^{2}+540\sum_{i=2}^{n-1}i+ 396(n-1-2+1)\\ 
+        &=12\sum_{i=2}^{n-1}(i^{3}-1)+156\sum_{i=2}^{n-1}(i^{2}-1)+540\sum_{i=2}^{n-1}(i-1)+ 396n-792\\
+        &=12\left(\frac{(n-1)^{2}(n)}{4}\right)-12+156\left(\frac{(n-1)(n)(2(n-1)+1)}{6}\right)-156+540\left(\frac{(n-1)(n)}{2}\right)-540+396n-792\\
+        &=3(n^{2}-2n+1)n^{2})-12+26((n^{2}-n)(2n-1))-156+270n^{2}-270n-540+396-792\\
+        &=3n^{4}-6n^{3}+3n^{2}-12+52n^{3}-26n^{2}-52n^{2}+270n^{2}+26n-156+270n-270n-540+396n-792\\
+        &=3n^{4}+46n^{3}+195n^{2}-152n-1500
+     \end{align*}
      
      \item $$ \sum_{i=5}^{n} \sum_{j=0}^{i}\sum_{k=0}^{j}3^k  \textrm{ pour tout } n \in \mathbb{N}, n\geq 5.$$
-  
 
+    \begin{align*}
+        &=\sum_{i=5}^{n} \sum_{j=0}^{i}\frac{3^{j+1}-1}{3-1}\\
+        &=\sum_{i=5}^{n} \sum_{j=0}^{i}\frac{1}{2}\left(3^{j}+1\right)\\
+        &=\sum_{i=5}^{n} \frac{1}{2}\sum_{j=0}^{i}3^{j}+1\\
+        &=\sum_{i=5}^{n} \frac{1}{2}\left(\frac{3^{i+2}-1}{2}\right) -\frac{1}{2}\left(i+1\right)\\
+        &=\sum_{i=5}^{n} \frac{1}{4}\left(3^{i+2}-2i-5\right)\\
+        &=\frac{1}{4}\left(\frac{3^{n+3}-1}{2}\right)-\frac{1}{4}(3^{2}+3^{3}+3^{4}+3^{5}+3^{6})-\frac{1}{2}\left(\frac{n(n+1)}{2}\right)+\frac{10}{2}-\frac{5}{4}(n-4)\\
+        &=\frac{1}{3}\left(3^{n+3}-1\right)-\frac{1}{4}(1089)-\frac{1}{4}(n^{2}+n)+5-\frac{5n}{4}+5\\
+        &=\frac{1}{8}\left(3^{n+3}-1-2178-2n^{2}-2n+40-10n+40\right)\\
+        &=\frac{1}{8}\left(3^{n+3}-2n^{2}-12n-2099\right)\\
+    \end{align*}
+  
 \end{enumerate}
 
 \bigskip
 
-\underline{Exercice 3} On suppose que $f(n) = \omega\left(g(n)\right)$. Démontrer \textbf{à l'aide des définitions formelles} que $5g(n) +3 f(n) = \omega \left(2g(n)\right)$.
+\underline{Exercice 3} 
 
+    On suppose que $f(n) = \omega\left(g(n)\right)$.
 
+    Pour toute constante strictement positive $c_0$, il existe $n_0>0$ telle que pour tout $n > n_0$,
+    
+    $0\leq c_0\cdot g(n)\leq f(n)$.
+    Ainsi,
+
+    $0\leq 6\cdot c_0\cdot g(n)\leq 6\cdot f(n)$ 
+    
+    $0\leq \frac{6\cdot c_0\cdot g(n)}{2}\leq \frac{6}{2}\cdot f(n)$
+
+    $0 \leq \frac{2\cdot 3\cdot c_0}{2}\cdot g(n)\leq 3\cdot f(n)$
+
+    $0 \leq \left(\frac{ 3\cdot c_0}{2}+5\right)\cdot 2g(n)\leq 3\cdot f(n) + 5\cdot f(n)$
+    
+   \bigskip 
+
+    En posant c = $\frac{2\cdot 3\cdot c0}{2}+5$,
+
+    \begin{center}
+        pour tout $n > n_0$, $0 \leq c\cdot 2g(n)\leq 3\cdot f(n) + 5\cdot f(n)$,
+    \end{center}
+    ce qui démontre que $f(n) = \omega\left(g(n)\right)$.
 
 
 \bigskip
@@ -127,6 +234,37 @@ Nom : \underline{Gaëtan} \hfill{}Code permanent : \underline{OUEG82330306}
 \underline{Exercice 4}
 On suppose que $f(n) = O\left(h(n)\right)$ et $g(n) = \Omega \left(1\right)$. Démontrer \textbf{à l'aide des définitions formelles} que $7f(n) =O \left( h(n) g(n)\right)$.
 
+\bigskip
+
+    On suppose que $f(n) = O\left(h(n)\right)$ et $g(n) = \Omega \left(1\right)$.
+    
+    Si $f(n) = O\left(h(n)\right)$ alors il existe deux constantes strictement positives $c_1$ et $n_1$ telles que
+    \begin{center}
+        $0\leq f(n) \leq c_1 \cdot h(n)$, pour tout $n \geq n_1$.
+        
+        $0 \leq 7\cdot f(n) \leq 7\cdot c_1\cdot h(n)$
+    \end{center}
+    
+    
+
+    Donc avec $7\cdot c1 = d$, $0 \leq 7\cdot f(n) \leq d\cdot h(n)$.
+
+    \bigskip
+
+    De plus, si $g(n) = \Omega \left(1\right)$, alors il existe deux constantes strictement positives $c_2$ et $n_2$ tel que
+
+    $0\leq 1\cdot c_2 \leq g(n)$ pour tout $n \geq n_2$.
+
+    $0 \leq c_2\cdot h(n) \leq g(n)\cdot h(n)$
+
+    \bigskip
+
+    Ainsi, pour tout $n \geq max(n_1,n_2)$ et $c = min(d, c_2)$, 
+    
+    $0 \leq 7\cdot f(n) \leq \left( h(n) g(n)\right)$ et $7f(n) = O \left( h(n) g(n)\right)$.
+
+    Donc $7f(n) =O \left( h(n) g(n)\right)$.
+    
 \bigskip
 
 
@@ -137,10 +275,55 @@ On considère l’équation de récurrence $T(n)=4T(n-1) + 5T(n-2) +1$ pour tout
 \begin{enumerate}[label=\alph*)]
 
      \item Calculer $T(3)$, $T(4)$ et $T(5)$ à l'aide de l'équation de récurrence.
-     
+         \begin{align*} 
+            T(3) &= 4T(2) + 5T(1)\\
+            T(3) &= 8 
+         \end{align*}
+        \begin{align*} 
+            T(4) &= 4T(3) + 5T(2)\\
+            T(4) &= 4\cdot 8 + 5\cdot 1\\
+            T(4) &= 37
+        \end{align*}
+        \begin{align*} 
+            T(5) &= 4T(4) + 5T(3)\\
+            T(5) &= 4\cdot 37 + 5\cdot 8\\
+            T(5) &= 188
+        \end{align*}
      
      \item Démontrer \textbf{par récurrence} que $T(n)\geq  5^{n-2}$ pour tout entier $n \geq 2$.
 
+        \textbf{Initialisation :}
+        
+        Si $n=2$, $T(2)=1$ et $5^{2-2} \Leftrightarrow 5^0 \leq 1$.
+
+        Si $n=3$, $T(3)=8$ et $5^{3-2} \Leftrightarrow 5 \leq 8$.
+
+        L'initialisation est donc vérifiée.
+
+        \bigskip
+
+        \textbf{Récurrence :}
+
+        On suppose la proposition vraie au rang $k = n$ : $T(n)\geq  5^{n-2}$ pour tout entier $n \geq 2$. On veut montrer qu'elle est vraie au rang $k = n+1$ :$T(n+1)\geq  5^{n-1}$.
+
+        On pose que $T(n)\geq  5^{n-2}$ et $T(n-1)\geq  5^{n-3}$.
+
+        \begin{align*}
+            T(n+1) &= 4\cdot T(n) + 5\cdot T(n-1)\\
+            &\geq 4\cdot 5^{n-2} + 5\cdot 5^{n-3}\\
+            &\geq 5^{n-1}\cdot(4 \times 5^{-1} + 5\times 5^{-2})\\
+            &\geq 5^{n-1}\cdot(4 \times 0.2 + 5\times 0.04)\\
+            &\geq 5^{n-1}\cdot(0.8 + 0.2)\\
+            &\geq 5^{n-1}
+        \end{align*} 
+
+        $T(n+1)\geq  5^{n-1}$ est donc vraie et la proposition est donc récurrente.
+        
+        \bigskip
+
+        \textbf{Conclusion :}
+
+        La proposition est initialisée et récurrente donc pour tout $n \geq 2$, $T(n) = 5^{n-2}$.   
 \end{enumerate}
 
 \bigskip
@@ -151,10 +334,37 @@ On considère l’équation de récurrence $T(n)=4T(n-1) + 5T(n-2) +1$ pour tout
 
 \begin{enumerate}[label=\alph*)]
    \item $T(n)=8 T \left( \lceil{\frac{n}{4}} \rceil\right) + 5 n \, \sqrt{n} $
-     
+   
+   $a=8$, $b=4$ et $f(n) = 5n\sqrt{n} = 5n^{\frac{3}{2}} = \Theta(n^{\frac{3}{2}})$
+
+   $\log_b(a) = \log_4(8) = \frac{3}{2}$.
+
+    Le cas 2 s'applique donc $T(n)=\left(n^{\log_4(8)}\cdot \lg(n)\right)$.
+    
      \item $T(n)=9T \left( \lceil{\frac{n}{3}} \rceil\right) + 7n^6 $
 
-\item $T(n)=6 T \left( \lceil{\frac{n}{36}} \rceil\right) + \sqrt[3]{n} \lg(n) $
+    $a=9$, $b=3$ et $f(n) = 7n^{6}$
+
+    $\log_b(a) = \log_3(9) = 2$ et $n^{\log_b(a)}=n^{2}$.
+
+    Le cas 3 s'applique donc si on prend $\epsilon=4$, $f(n) = \Omega(n^{\log_3(9)+4}$ donc $T(n)=\Theta(f(n))$.
+    
+    De plus, on vérifie l'hypothèse que $a\cdot f\left(\frac{n}{b}\right)$,
+    
+    \begin{align*}
+        9\cdot f\left(\frac{n}{3}\right) &= 9 \times 7\left(\frac{n}{3}\right)^{6}\\
+        &= \frac{63n^{6}}{729}\\
+        &= \frac{7n^{6}}{81}
+    \end{align*}
+    
+    On peut donc prendre $c=\frac{1}{81}<1$.
+    
+    \item $T(n)=6 T \left( \lceil{\frac{n}{36}} \rceil\right) + \sqrt[3]{n} \lg(n) $
+    $a = 6$, $b=36$ et $f(n)=\sqrt[3]{n} \lg(n)$.
+
+    $\log_b(a) = \log_{36} (6) = \frac{1}{2} et n^{\log_b(a)}=n^{\frac{1}{2}}$.
+    
+    Le cas 1 s'applique donc si on prend $\epsilon=\frac{1}{6}$, $f(n) = \Omega\left(n^{\log_{36}(6)-\frac{1}{6}}\right)$ donc $T(n)=\Theta\left(n^{\log_{36}(6)}\right)$.
 
 \end{enumerate}
 
@@ -162,24 +372,25 @@ On considère l’équation de récurrence $T(n)=4T(n-1) + 5T(n-2) +1$ pour tout
 
 
 \underline{Exercice 7} 
-$$   n \lg^2(5n), \sqrt[3]{n^7}, \frac{3n^5+5n}{2n^2+1},2^{2 \log_{16}(n)} , \sqrt{n^2 \lg^5\left(\sqrt{n}\right)}, 5^{\lg(n)},n \lg(n^3),\frac{\sqrt{n}}{\lg(n)}$$
 
-$$\frac{\sqrt{n}}{\lg(n)}, \sqrt[3]{n^7}, n \lg(n^3), \frac{3n^5+5n}{2n^2+1}, 2^{2 \log_{16}(n)}, 5^{\lg(n)}, n \lg^2(5n), \sqrt{n^2 \lg^5\left(\sqrt{n}\right)}$$
+$$\frac{\sqrt{n}}{\lg(n)}, 2^{2 \log_{16}(n)}, \sqrt{n^2 \lg^5 \left(\sqrt{n}\right)}, n \lg^2(5n),n \lg(n^3), \sqrt[3]{n^7}, 5^{\lg(n)}, \frac{3n^5+5n}{2n^2+1}$$
 
 \bigskip
 
 
 \underline{Exercice 8} 
+\begin{align*}
+   T(n)&=\ n^2\, 32^{ 2\log_4(n)} \lg^3\left(\sqrt[3]{n}\right) \, \log_5\left(\frac{n^4}{\sqrt{n}} \right) \\
+   &= n^{2}\cdot \left(32^{\log_4(n)}\right)^{2}\cdot \left(\lg(\sqrt[3]{n})\right)^{3}\cdot \left(\log_5(n^{4})-\log_5(\sqrt{n})\right)\\
+   &= n^{2} \cdot \left(n^{\log_4(32)}\right)^{2}\cdot \left(\frac{1}{3}\lg(n)\right)^{3}\cdot \left(4\log_5(n) - \frac{1}{2}\log_5(n)\right)\\
+   &= n^{2} \cdot \left(n^{5/2}\right)^{2} \cdot \left(\frac{1}{3}\lg(n)\right)^{3} \cdot \left(\frac{7}{2}\log_5(n)\right)\\
+   &=n^{2} \cdot n^{5} \cdot \frac{7}{27\times2} \cdot\lg^{3}(n) \cdot \log_5(n)\\
+   &=\frac{7}{54}\cdot n^{7}\cdot\lg^{3}(n) \cdot \frac{\lg(n)}{\log_5}\\
+   &=\frac{7}{54\times\log_5}\cdot n^{7}\cdot\lg^{4}(n)
+\end{align*}
+ 
+Ainsi, $T(n) =\frac{7}{54\times\log_5}\cdot n^{7}\cdot\lg^{4}(n)$.
 
-$T(n)=\ n^2\, 32^{ 2\log_4(n)} \lg^3\left(\sqrt[3]{n}\right) \, \log_5\left(\frac{n^4}{\sqrt{n}} \right) $. 
-
-$=$
-
-$= $
-
-$= $
-
-$=$
 
 \end{document}
 
