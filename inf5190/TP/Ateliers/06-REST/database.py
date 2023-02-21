@@ -29,9 +29,16 @@ class Database:
     def nb_livres(self):
         cursor = self.get_connection().cursor()
         cursor.execute("select count(id) from livre")
-        return cursor.fetchone()[0]
+        nb = cursor.fetchone()
+        return nb[0]
 
     def add_book(self, titre, auteur, annee, nb_pages, nb_chap):
         cursor = self.get_connection().cursor()
         cursor.execute("insert into livre (titre, auteur, annee_publi, nb_pages, nb_chap) VALUES (?, ?, ?, ?, ?)",
                        (titre, auteur, annee, nb_pages, nb_chap))
+        self.get_connection().commit()
+
+    def del_book(self, id_book):
+        cursor = self.get_connection().cursor()
+        cursor.execute("delete from livre where id = ?", [id_book])
+        self.get_connection().commit()

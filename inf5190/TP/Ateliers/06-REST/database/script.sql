@@ -34,3 +34,13 @@ insert into livre (titre, auteur, annee_publi, nb_pages, nb_chap) VALUES ('La Ca
 insert into livre (titre, auteur, annee_publi, nb_pages, nb_chap) VALUES ('Les Rois maudits', 'Maurice Druon', '1955', 384, 7);
 insert into livre (titre, auteur, annee_publi, nb_pages, nb_chap) VALUES ('Les Hauts de Hurlevent', 'Emily Bronte', '1847', 416, 34);
 insert into livre (titre, auteur, annee_publi, nb_pages, nb_chap) VALUES ('Le Parfum', 'Patrick Suskind', '1985', 272, 51);
+
+--data en json
+"{
+	"annee_publi": 1078,
+	"auteur": "Sun Tzu",
+	"nb_chap": 13,
+	"nb_pages": 95,
+	"titre": "L'art de la guerre"
+}
+"
