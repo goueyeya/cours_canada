@@ -1,7 +1,7 @@
 import sqlite3
 
 
-class Article:
+class Database:
 
     def __init__(self):
         self.connection = None
@@ -15,6 +15,11 @@ class Article:
         if self.connection is not None:
             self.connection.close()
 
+    def nb_articles(self):
+        cursor = self.get_connection().cursor()
+        cursor.execute("select count(id) from article")
+        return cursor.fetchone()[0]
+
     def get_article_by_id(self, id_article):
         cursor = self.get_connection().cursor()
         cursor.execute("select * from article where id = ?", [id_article])
@@ -26,4 +31,3 @@ class Article:
         articles = cursor.fetchall()
         return[(i[0], i[1], i[2], i[3], i[4], i[5]) for i in articles]
 
-    
