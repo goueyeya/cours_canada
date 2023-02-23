@@ -1,4 +1,0 @@
-solution :
-mettre dans le input {loi.flag}
-
-car {}
