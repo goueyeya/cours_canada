@@ -1,0 +1,4 @@
+http://inlock.casino-drumond.kaa
+1) c'est le meem principe qu'avant seulement que nous avons un nounce dans les paramatres.
+Le nounce se crée sur la page d'authentification et ne s'utilise qu'une fois.
+On recupere un nouveau nounce et on le met dans l'url avec le param. name = admin.
