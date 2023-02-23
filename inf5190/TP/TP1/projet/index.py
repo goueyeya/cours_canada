@@ -33,11 +33,8 @@ def index():
 def article(id_article):
     nb_articles = get_db().nb_articles()
     if request.method == "GET":
-        if id_article.isnumeric() or int(id_article) > nb_articles:
-            return 404
-        else:
-            livre = get_db().get_article_by_id(id_article)
-            return render_template("un_article.html", livre=livre)
+        livre = get_db().get_article_by_id(id_article)
+        return render_template("un_article.html", livre=livre)
 
 
 
