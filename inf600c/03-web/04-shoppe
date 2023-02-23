@@ -3,4 +3,10 @@
 Cet id est codé en base64. Quand on le decode cela donne 1,2,3,etc.
 Le chiffre manquant est 4 donc en l'encode en b64 et cela donne NA==.
 On le met dans l'url et on trouve le flag.
-3) on va sur l'onget ou il y a un secret caché on recupere le bscuit et on le decode avec url decoder
+3) on va sur l'onget ou il y a un secret caché on recupere le biscuit et on le decode avec url decoder
+On remarque que c'est du json et on met le false a true puis il y a un hash a la fin qui est checkson (valider le json )
+on reencode donc le json en sha1 et on le reencode en url html puis on change son cookie et c'est bon 
+4) pour le derinier flag on veut voir le flag dans une table du site : 1 UNION SELECT 1,name,3 FROM sqlite_master WHERE type='table' 
+trouver le nombre de colonnes de dead_friends : 1 union select 1,sql,3 from sqlite_master where tbl_name='dead_friends'
+et afficher le contenu de dead friends : select union 1, utilisateur, password from dead_friends
+toujours en encodant en base 64 et le mettre dans l'url avec le weapon=
