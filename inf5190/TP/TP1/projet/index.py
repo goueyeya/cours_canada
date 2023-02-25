@@ -3,11 +3,7 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from flask import g
-from .database import Database
-import sqlite3
-import hashlib
-import uuid
-import re
+from database import Database
 
 app = Flask(__name__)
 
@@ -24,29 +20,45 @@ def page_not_found(e):
 
 @app.route("/",methods=["GET"])
 def index():
-    if request.method =="GET":
-
-    else:
-        o
-
-@app.route("/article/<id_article>", methods=["GET"])
-def article(id_article):
     nb_articles = get_db().nb_articles()
-    if request.method == "GET":
-        livre = get_db().get_article_by_id(id_article)
-        return render_template("un_article.html", livre=livre)
+    if nb_articles < 1:
+        return render_template("index.html",msg="Aucun article pour le moment...")
+    else:
+        articles= get_db().get_last_insert()
+        results=({"titre": i[0], "identifiant": i[1], "auteur": i[2],"date_publi": i[3],"paragraphe": i[4]} for i in articles)
+        return render_template("index.html", args=results)
+        
+
+@app.route("/recherche/<search>", methods=["GET"])
+def search_article(search):
+    search_db = get_db().get_article_by_search(search)
+    if search_db is None:
+        return render_template("recherche.html", no_args="")
+    else:
+        results=({"titre": i[0], "identifiant": i[1], "auteur": i[2],"date_publi": i[3],"paragraphe": i[4]} for i in search_db)
+        return render_template("recherche.html",args=results)
+
+
+@app.route("/article/<identifiant>", methods=["GET"])
+def display_article(identifiant):
+    article_db = get_db().get_article_by_id(identifiant)
+    article = {"titre": article_db[0], "identifiant":article_db[1], "auteur": article_db[2],"date_publi": article_db[3],
+              "paragraphe": article_db[4]}
+    return render_template("un_article.html", livre=article)
 
 
 
 @app.route("/admin",methods=["GET"])
 def admin():
     if request.method == "GET":
-        o
+
 
 @app.route("/admin-nouveau",methods=["GET"])
 def admin_nouveau():
     if request.method == "GET":
-        o
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
