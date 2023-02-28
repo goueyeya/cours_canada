@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 {% block title %}Page Not Found{% endblock %}
-{% block body %}
-  <h1>Page Not Found</h1>
-  <p>What you were looking for is just not there.
-  <p><a href="/">go somewhere nice</a>
+
+{% block content %}
+  <h1>404</h1>
+  <h2>Page Not Found</h2>
+  <p>Ce que vous cherchez n'est pas ici !</p>
+  <p>Allez dans un endroit<a href="{{ url_for('index') }}"> cool</a>.</p>
+  <img src="{{ url_for('static', filename = 'img/lost.png') }}">
+  <a href="https://www.flaticon.com/free-icons/lost" title="lost icons">Lost icons created by Freepik - Flaticon</a>
 {% endblock %}

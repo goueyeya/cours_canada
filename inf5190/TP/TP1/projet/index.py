@@ -47,7 +47,7 @@ def display_article(identifiant):
     return render_template("un_article.html", livre=article)
 
 
-
+"""
 @app.route("/admin",methods=["GET"])
 def admin():
     if request.method == "GET":
@@ -56,7 +56,7 @@ def admin():
 @app.route("/admin-nouveau",methods=["GET"])
 def admin_nouveau():
     if request.method == "GET":
-
+"""
 
 
 if __name__ == '__main__':

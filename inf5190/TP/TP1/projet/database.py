@@ -17,24 +17,23 @@ class Database:
 
     def nb_articles(self):
         cursor = self.get_connection().cursor()
-        cursor.execute("select count(id) from article")
-        return cursor.fetchone()[0]
+        nb = cursor.execute("select count(id) from article").fetchone()[0]
+        return nb
 
     def get_article_by_id(self, identifiant):
         cursor = self.get_connection().cursor()
-        cursor.execute("select titre, identifiant, auteur, date_publication, paragraphe from article where identifiant"
-                       " = ?", [identifiant])
-        return (i[0], i[1], i[2], i[3], i[4] for i in cursor)
+        article = cursor.execute("select titre, identifiant, auteur, date_publication, paragraphe from article "
+                                 "where identifiant = ?", [identifiant]).fetchone()
+        return article
 
     def get_article_by_search(self, search):
         cursor = self.get_connection().cursor()
-        cursor.execute("select * from article like %?%", [search])
-        articles = cursor.fetchall()
+        articles = cursor.execute("select * from article like %?%", [search]).fetchall()
         return[(i[0], i[1], i[2], i[3], i[4], i[5]) for i in articles]
 
     def get_last_insert(self):
         cursor = self.get_connection().cursor()
-        cursor.execute("select * from article order by date_publication desc limit 5 ")
-        articles = cursor.fetchall()
+        articles = cursor.execute("select * from article where date_publication <= date('now','localtime')"
+                                  "order by date_publication desc limit 5 ").fetchall()
         return[(i[0], i[1], i[2], i[3], i[4], i[5]) for i in articles]
 
