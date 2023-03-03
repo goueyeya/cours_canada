@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}MesArticles.ca : Page Admin{% endblock %}
+{% block content %}
+  <br>
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h1 class="pb-3 mb-4 font-italic border-bottom">Administration des articles</h1>
+        {% for article in articles %}
+        <div class="col-sm-12 mb-12 mb-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title modif-title">{{ article['titre'] }}</h5>
+              <p class="card-text">{{ article['date_publi'] }}</p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <form action="{{url_for('admin_modif',identifiant=article['identifiant'])}}">
+                  <button class="btn btn-outline-primary me-md-2" role="button">Modifier</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        {% endfor %}
+        </div>
+        <aside class="col-md-4 blog-sidebar">
+          <br>
+          <br>
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic border-bottom">Formulaire de création</h4>
+              <p>Créer un article <a href="{{ url_for('admin_nouveau') }}">ici</a>.</p>
+            <br>
+          </div>
+          <br>
+        </aside>
+    </div>
+    <br>
+  </main>
+{% endblock %}

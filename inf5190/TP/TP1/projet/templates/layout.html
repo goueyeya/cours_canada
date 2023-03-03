@@ -3,19 +3,66 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %} {% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+  <script src="https://kit.fontawesome.com/78c2888d65.js" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
 </head>
-  <body>
-    <nav>
+<body>
 
-    </nav>
+  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <!-- lien home -->
+      <a class="navbar-brand" href="/">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+        MesArticles.ca
+      </a>
+      <!-- lien home -->
+      <!-- hamburger -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <!-- hamburger-->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- lien admin -->
+          <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
+          <!-- lien admin -->
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    {% block content %} {% endblock %}
+  {% block content %} {% endblock %}
 
-    <footer>
-
-    </footer>
-  </body>
+  <footer class="text-center text-white bg-body-tertiary ">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-dark btn-floating m-1" href="https://facebook.com" role="button"><i class="fa-brands fa-facebook"></i></i></a>
+        <!-- Twitter -->
+        <a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com" role="button"><i class="fa-brands fa-twitter"></i></i></a>
+        <!-- Google -->
+        <a class="btn btn-outline-dark btn-floating m-1" href="https://google.com" role="button"><i class="fa-brands fa-google"></i></i></a>
+        <!-- Instagram -->
+        <a class="btn btn-outline-dark btn-floating m-1" href="https://instagram.com" role="button"><i class="fa-brands fa-instagram"></i></a>
+        <!-- Linkedin -->
+        <a class="btn btn-outline-dark btn-floating m-1" href="https://www.linkedin.com/in/goueyeya" role="button"><i class="fa-brands fa-linkedin"></i></i></a>
+        <!-- Github -->
+        <a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/goueyeya" role="button"><i class="fa-brands fa-github"></i></i></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+    <!-- Copyright -->
+    <div class="text-center p-3 text-black under">
+      <p>© 2023 Copyright : <a class="text-black" href="{{ url_for('index') }}">Mes articles.ca</a></p>
+    </div>
+    <!-- Copyright -->
+  </footer>
+</body>
 </html>

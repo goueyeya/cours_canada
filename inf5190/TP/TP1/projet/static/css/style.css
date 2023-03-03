@@ -1,1 +1,31 @@
-@charset "UTF-8";/*!
+@charset "UTF-8";
+
+html, body{
+  height : 100%;
+}
+footer .under{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+footer{
+  bottom : 0 ;
+}
+
+.search-link{
+  text-decoration : none;
+  color : grey;
+}
+
+.font-special-id{
+  color:grey;
+  font-style:italic;
+  font-weight: 300;
+}
+
+.modif-title{
+  color:grey;
+}
+
+.tarea{
+  height:140px;
+}

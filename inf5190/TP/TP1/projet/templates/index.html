@@ -1,3 +1,43 @@
 {% extends "layout.html" %}
-{% block title %}GazetteUqam.ca : Postez vos articles{% endblock %}
-{%
+{% block title %}MesArticles.ca : Postez vos articles{% endblock %}
+{% block content %}
+  <br>
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h1 class="pb-3 mb-4 font-italic border-bottom">Les Nouveautés</h1>
+        {% for article in articles %}
+          <div class="blog-post">
+            <h3 class="blog-post-title">{{ article['titre'] }}</h3>
+            <p class="blog-post-meta subti">{{ article['date_publi'] }}, par {{ article['auteur'] }}</p>
+            <p class="text-justify">{{ article['paragraphe'] }}</p>
+            <p class ="font-special-id" >identifiant : {{ article['identifiant'] }}</p>
+          </div>
+        <br>
+        {% endfor %}
+        </div>
+        <aside class="col-md-4 blog-sidebar">
+          <br>
+          <!--search bar!-->
+          <form class="d-flex" action="{{ url_for('search_article') }}" method="get">
+            <input class="form-control me-2" name="search" type="search" placeholder="Rechercher dans le catalogue" aria-label="Search">
+            <button class="btn btn-outline-secondary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+          <!--search bar!-->
+          <br>
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic border-bottom">À propos</h4>
+            <p class="mb-0">Ce site est une version simplifiée d'un CMS vous permettant de poster des articles dessus.
+              Il a été entièrement conçu par <a class ="text-black" href="https://github.com/goueyeya"><em>Gaëtan OUEYEYA</em></a> lors de son cours d'INF5190.</p>
+            <br>
+            <h5 class="font-italic border-bottom">C'est quoi un CMS ?</h5>
+            <p> Un CMS permet de gérer le contenu d'un site web, c'est-à-dire d'y mettre des articles, de spécifier
+              à quel moment ces articles seront publiés, bref de permettre à un non-programmeur de modifier le contenu
+              de son site web.</p>
+          </div>
+          <br>
+        </aside>
+    </div>
+    <br>
+  </main>
+{% endblock %}

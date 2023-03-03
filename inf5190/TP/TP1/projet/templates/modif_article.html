@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}MesArticles.ca : Modification '{{ article['titre'] }}'{% endblock %}
+{% block content %}
+<main>
+  <br>
+  <div class="container">
+    <h3 class="pb-3 mb-4 font-italic border-bottom">Modification de '{{ article['titre'] }}'</h3>
+    <p> Article publié le {{ article['date_publi'] }}, par {{ article['auteur'] }}</p>
+    <br>
+    {% if error is not none %}
+      <p class="text-danger">{{ error }}</p>
+    {% endif %}
+    <form action="{{url_for('admin_modif',identifiant=article['identifiant'])}}" method="post" id="formmodif">
+      <div class="form-group">
+        <label for="titre">Titre</label>
+        <input type="text" class="form-control" name="titre" value="{{ article['titre'] }}">
+      </div>
+      <br>
+      {% if errorlen is not none %}
+        <p class="text-danger">{{ errorlen }}</p>
+      {% endif %}
+      <div class="form-group">
+        <label for="paragraphe">Paragraphe</label>
+        <textarea class="form-control tarea" id="paragraphe" name="paragraphe" form="formmodif">{{ article['paragraphe'] }}</textarea>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+  </div>
+</main>
+<br>
+{% endblock %}

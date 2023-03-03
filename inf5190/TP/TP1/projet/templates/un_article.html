@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}MesArticles.ca : {{ article['titre'] }}{% endblock %}
+{% block content %}
+  <main>
+  <br>
+    <div class="container">
+      <div class="row container-fluid">
+        <h5 class="text-center">{{ article['titre'] }}</h5>
+        <hr>
+        <br>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
+          <p class="text-justify">{{ article['paragraphe']}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+          <h6 class="font-italic"><i class="fa-sharp fa-solid fa-circle-user"></i> Par {{ article['auteur']}}</h6>
+          <p>Publié le {{ article['date_publi'] }}</p>
+        </div>
+      </div>
+    </div>
+    <br>
+  </main>
+{% endblock %}

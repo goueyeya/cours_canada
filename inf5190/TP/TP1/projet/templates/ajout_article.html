@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block title %}MesArticles.ca : Créez et postez vos articles{% endblock %}
+{% block content %}
+<main>
+  <br>
+  <div class="container">
+      <h3 class="pb-3 mb-4 font-italic border-bottom">Créez et postez vos articles</h3>
+      <br>
+      {% if error is not none %}
+        <p class="text-danger">{{ error }}</p>
+      {% endif %}
+      <!-- Formulaire -->
+      <form action="{{url_for('admin_nouveau')}}" method="post" id="formmodif">
+
+        <!--Titre -->
+        {% if errorti is not none %}
+          <p class="text-danger">{{ errorti }}</p>
+        {% endif %}
+        <div class="form-group">
+          <label id="titre">Titre</label>
+          <input type="text" class="form-control" name="titre">
+        </div>
+        <br>
+        <!--Titre -->
+
+        <!--Identifiant -->
+        {% if errorid is not none %}
+          <p class="text-danger">{{ errorid }}</p>
+        {% endif %}
+          <div class="form-group">
+          <label id="identifiant">Identifiant</label>
+          <input type="text" class="form-control" name="identifiant">
+        </div>
+        <br>
+        <!--Identifiant -->
+
+        <!--Auteur -->
+        {% if erroraut is not none %}
+          <p class="text-danger">{{ erroraut }}</p>
+        {% endif %}
+          <div class="form-group">
+          <label id="auteur">Auteur</label>
+          <input type="text" class="form-control" name="auteur">
+        </div>
+        <br>
+        <!--Auteur -->
+
+        <!--Date -->
+        {% if errordat is not none %}
+          <p class="text-danger">{{ errordat }}</p>
+        {% endif %}
+          <div class="form-group">
+          <label id="date_publi">Date de publication</label>
+          <input type="date" class="form-control" name="date_publi" pattern="\d{4}-\d{2}-\d{2}">
+        </div>
+        <br>
+        <!--Date -->
+
+        <!-- Paragraphe -->
+        {% if errorlen is not none %}
+          <p class="text-danger">{{ errorlen }}</p>
+        {% endif %}
+        <div class="form-group">
+          <label for="paragraphe">Paragraphe</label>
+          <textarea class="form-control tarea" name="paragraphe" form="formmodif"></textarea>
+        </div>
+        <br>
+        <!-- Paragraphe -->
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+  </div>
+</main>
+<br>
+{% endblock %}
