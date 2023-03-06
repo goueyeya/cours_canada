@@ -2,12 +2,12 @@
 {% block title %}MesArticles.ca : Postez vos articles{% endblock %}
 {% block content %}
   <br>
-  <main role="main" class="container">
+  <main class="container">
     <div class="row">
       <div class="col-md-8 blog-main">
         <h1 class="pb-3 mb-4 font-italic border-bottom">Les Nouveautés</h1>
         {% for article in articles %}
-          <div class="blog-post">
+          <div class="blog-post back-ciel">
             <h3 class="blog-post-title">{{ article['titre'] }}</h3>
             <p class="blog-post-meta subti">{{ article['date_publi'] }}, par {{ article['auteur'] }}</p>
             <p class="text-justify">{{ article['paragraphe'] }}</p>

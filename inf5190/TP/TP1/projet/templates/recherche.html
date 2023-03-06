@@ -9,8 +9,8 @@
     {% for article in articles %}
       <div class="col-sm-4 mb-4 mb-sm-12">
         <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><a class ="search-link" href={{url_for('display_article',identifiant=article['identifiant'])}}>{{ article['titre'] }}</a></h5>
+          <div class="card-body back-purple">
+            <h5 class="card-title "><a class ="search-link" href={{url_for('display_article',identifiant=article['identifiant'])}}>{{ article['titre'] }}</a></h5>
             <p class="card-text">{{ article['date_publi'] }}</p>
           </div>
         </div>

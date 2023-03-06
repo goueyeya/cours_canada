@@ -23,9 +23,23 @@ footer{
 }
 
 .modif-title{
-  color:grey;
+  color: #3398FF;
 }
 
 .tarea{
   height:140px;
+}
+
+.back-ciel{
+  background-color: #F6FCFE;
+  border-radius: 10px;
+  padding: 3px ;
+}
+
+.back-purple{
+  background-color: #E9EFFE;
+}
+
+.back-yellow{
+  background-color: #FDF8F3;
 }

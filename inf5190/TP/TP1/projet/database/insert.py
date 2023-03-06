@@ -5,8 +5,9 @@ conn = sqlite3.connect('database.db')
 c = conn.cursor()
 
 # suppression des données de la tables
-conn.execute("DELETE from article")
-conn.commit()
+# conn.execute("DELETE from article")
+# conn.commit()
+
 
 # Insertion des articles
 articles = [

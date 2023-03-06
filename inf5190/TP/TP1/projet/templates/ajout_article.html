@@ -10,7 +10,7 @@
         <p class="text-danger">{{ error }}</p>
       {% endif %}
       <!-- Formulaire -->
-      <form action="{{url_for('admin_nouveau')}}" method="post" id="formmodif">
+      <form action="{{url_for('create_article')}}" method="post" id="formmodif">
 
         <!--Titre -->
         {% if errorti is not none %}
@@ -18,7 +18,8 @@
         {% endif %}
         <div class="form-group">
           <label id="titre">Titre</label>
-          <input type="text" class="form-control" name="titre">
+          <input type="text" class="form-control" name="titre"
+            {% if article is not none %} value="{{ article['titre'] }}" {%endif%}>
         </div>
         <br>
         <!--Titre -->
@@ -29,7 +30,8 @@
         {% endif %}
           <div class="form-group">
           <label id="identifiant">Identifiant</label>
-          <input type="text" class="form-control" name="identifiant">
+          <input type="text" class="form-control" name="identifiant"
+            {% if article is not none %} value="{{ article['identifiant'] }}" {%endif%}>
         </div>
         <br>
         <!--Identifiant -->
@@ -40,7 +42,8 @@
         {% endif %}
           <div class="form-group">
           <label id="auteur">Auteur</label>
-          <input type="text" class="form-control" name="auteur">
+          <input type="text" class="form-control" name="auteur"
+            {% if article is not none %} value="{{ article['auteur'] }}" {%endif%}>
         </div>
         <br>
         <!--Auteur -->
@@ -51,7 +54,8 @@
         {% endif %}
           <div class="form-group">
           <label id="date_publi">Date de publication</label>
-          <input type="date" class="form-control" name="date_publi" pattern="\d{4}-\d{2}-\d{2}">
+          <input type="date" class="form-control" name="date_publi"
+            {% if article is not none %} value="{{ article['date_publi'] }}" {%endif%}>
         </div>
         <br>
         <!--Date -->
@@ -61,8 +65,8 @@
           <p class="text-danger">{{ errorlen }}</p>
         {% endif %}
         <div class="form-group">
-          <label for="paragraphe">Paragraphe</label>
-          <textarea class="form-control tarea" name="paragraphe" form="formmodif"></textarea>
+          <label id="paragraphe">Paragraphe</label>
+          <textarea class="form-control tarea" name="paragraphe" form="formmodif">{% if article is not none %}{{ article['paragraphe'] }}{%endif%}</textarea>
         </div>
         <br>
         <!-- Paragraphe -->

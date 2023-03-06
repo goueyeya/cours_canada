@@ -10,9 +10,9 @@
     {% if error is not none %}
       <p class="text-danger">{{ error }}</p>
     {% endif %}
-    <form action="{{url_for('admin_modif',identifiant=article['identifiant'])}}" method="post" id="formmodif">
+    <form action="{{url_for('update_article',identifiant=article['identifiant'])}}" method="post" id="formmodif">
       <div class="form-group">
-        <label for="titre">Titre</label>
+        <label id="titre">Titre</label>
         <input type="text" class="form-control" name="titre" value="{{ article['titre'] }}">
       </div>
       <br>
@@ -20,8 +20,8 @@
         <p class="text-danger">{{ errorlen }}</p>
       {% endif %}
       <div class="form-group">
-        <label for="paragraphe">Paragraphe</label>
-        <textarea class="form-control tarea" id="paragraphe" name="paragraphe" form="formmodif">{{ article['paragraphe'] }}</textarea>
+        <label id="paragraphe">Paragraphe</label>
+        <textarea class="form-control tarea" name="paragraphe" form="formmodif">{{ article['paragraphe'] }}</textarea>
       </div>
       <br>
       <button type="submit" class="btn btn-primary">Envoyer</button>
