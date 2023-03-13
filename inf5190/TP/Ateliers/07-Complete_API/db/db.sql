@@ -1,7 +1,19 @@
-create table personne (
-  id int primary key,
+create table person (
+  id integer primary key,
   nom varchar(50),
   prenom varchar(50),
-  age int,
-  date_naissance text,
-  )
+  age integer,
+  date_naissance text
+ );
+
+create table gradePerson (
+  idPerson integer,
+  idGrade integer,
+  foreign key(idPerson) references person(id),
+  foreign key(idGrade) references grade(id)
+ );
+
+ create table grade (
+  id integer primary key,
+  description varchar(50)
+ );
