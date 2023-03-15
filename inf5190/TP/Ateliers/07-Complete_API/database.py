@@ -1,5 +1,5 @@
 import sqlite3
-from person import Person
+from .person import Person
 
 
 class Database:
