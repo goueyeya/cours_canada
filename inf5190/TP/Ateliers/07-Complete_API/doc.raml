@@ -1,1 +1,91 @@
-#%RAML <version> <?fragment type>
+#%RAML 1.0
+title: API personne
+mediaType: application/json
+types:
+    NewPerson:
+        properties:
+            prenom:
+                type: string
+                required : true
+            nom:
+                type: string
+                required: true
+            age:
+                type: number
+                required: true
+            date_naissance:
+                type : string
+                format : date
+                required: true
+            grades:
+                array:
+                    properties:
+                        type: string
+    ExistingPerson:
+        properties:
+            prenom:
+                type: string
+                required : false
+            nom:
+                type: string
+                required: false
+            age:
+                type: number
+                required: false
+            date_naissance:
+                type : string
+                format : date
+                required: false
+            grades:
+                type: array
+                items:
+                    properties:
+                        type: string
+/api:
+    /person:
+        get:
+            description: Récupère les données de toutes les personnes
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: ExistingPerson[]
+        post:
+            description: Crée une nouvelle personne
+            body:
+                application/json:
+                    type: NewPerson
+                    example:
+                        prenom : Romane
+                        nom: Justo
+                        age: 20
+                        date_naissance: 2003-08-20
+                        grades: [Bac, Brevet]
+                responses:
+                    201:
+                        description: La personne est crée
+                        body:
+                            application/json:
+                                type: ExistingPerson
+                                example:
+                                    prenom : Romane
+                                    nom: Justo
+                                    age: 20
+                                    date_naissance: 2003-08-20
+                                    grades: [Bac, Brevet]
+                    400:
+                        description: La requête est incorrecte
+        /{id}:
+            put:
+                description: Modify the data of one person, specified by it's id. It is not possible to change the id.
+                body:
+                    application/json:
+                        type: ExistingPerson
+                responses:
+                    200:
+                        description: La requête est un succès.
+                        body:
+                            application/json:
+                                type: ExistingPerson
+                    404:
+                        description: L'identifiant spécifié n'existe pas.

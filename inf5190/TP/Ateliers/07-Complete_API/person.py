@@ -8,8 +8,9 @@ class Person:
         self.grades = grades
 
     def asDictionnary(self):
-        return {"prenom": self.prenom,
+        return {"id": self.id,
+                "prenom": self.prenom,
                 "nom": self.nom,
                 "age": self.age,
                 "date_naissance": self.date_naissance,
-                "grades": ({"grade": grade} for grade in self.grades)}
+                "grades": self.grades}

@@ -9,8 +9,8 @@ create table person (
 create table gradePerson (
   idPerson integer,
   idGrade integer,
-  foreign key(idPerson) references person(id),
-  foreign key(idGrade) references grade(id)
+  foreign key(idPerson) references person(id) on delete cascade,
+  foreign key(idGrade) references grade(id) on delete cascade
  );
 
  create table grade (
