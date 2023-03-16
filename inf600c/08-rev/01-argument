@@ -1,0 +1,2 @@
+on voit qu'avec ltrace il y a un stringcmp de l'argument et de Arthur.
+En regardant le objdump, on trouve que le mdp est 0xcafecafe

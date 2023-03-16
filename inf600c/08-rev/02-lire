@@ -1,0 +1,5 @@
+Le fichier ne fait rien d'autre qu'afficher Hello mais on remarque qu'il loade des bytes dans rbp.
+ce qu'il loade est en fait des caractère ascii.
+avec la commande : # pour 08-rev/lire
+objdump -dMintel ./lire | grep -E "BYTE PTR \[rbp-0x1\],0x\w{2}" | grep -Eo "0x\w{2}" | tr '\n' ' ' | xxd -r -p
+on recupere tout ces caracteres et on affiche le flag 
