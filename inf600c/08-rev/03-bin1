@@ -1,0 +1,3 @@
+on remarque dans le objdump que la fonction printflag est affiché directement.
+on va donc dans gdb 
+on start le deboggage et on jump a printflag : cmd -> j/jump  printflag/adresse printflag
