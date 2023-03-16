@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}MesArticles.ca : Page Not Found{% endblock %}
+
+{% block content %}
+<main>
+  <div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+      <h1 class="display-1 fw-bold">404</h1>
+      <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+      <p class="lead">Ce que vous cherchez n'est pas ici !</p>
+      <img src="{{ url_for('static', filename = 'img/lost.png') }}"><br>
+      <a class="link-light" href="https://www.flaticon.com/free-icons/lost" title="lost icons">Lost icons created by Freepik - Flaticon</a>
+      <br>
+      <a href="{{ url_for('display_index_page') }}" class="btn btn-danger">Accueil</a>
+    </div>
+  </div>
+</main>
+{% endblock %}
