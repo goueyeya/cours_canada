@@ -3,6 +3,26 @@
 {% block content %}
   <br>
   <main class="container">
+    <div class="container-fluid">
+      <!--search bar!-->
+      <form class="d-flex" action="{{ url_for('search_article') }}" method="get">
+        <input class="form-control me-2" name="search" type="search" placeholder="Rechercher dans le catalogue" aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
+        <div class="container">
+          <div><h3>Filtres</h3></div>
+          <input type="checkbox" class="btn-check" id="btn-check-outlined" name="nom" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btn-check-outlined">Nom d'établissement</label>
+
+          <input type="checkbox" class="btn-check" id="btn-check-outlined" name="proprietaire" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btn-check-outlined">Propritaire</label>
+
+          <input type="checkbox" class="btn-check" id="btn-check-outlined"  name="rue" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btn-check-outlined">Rue</label>
+        </div>
+      </form>
+      <!--search bar!-->
+
+    </div>
   </main>
   <br>
 {% endblock %}

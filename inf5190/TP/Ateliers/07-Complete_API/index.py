@@ -5,7 +5,6 @@ from flask import jsonify
 from flask import render_template
 from flask_json_schema import JsonSchema
 from flask_json_schema import JsonValidationError
-import json
 from .database import Database
 from .schemas import update_personne_schema
 from .schemas import insert_personne_schema
