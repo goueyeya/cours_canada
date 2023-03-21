@@ -2,26 +2,35 @@
 {% block title %}GastroPoliceMTL.ca{% endblock %}
 {% block content %}
   <br>
-  <main class="container">
-    <div class="container-fluid">
+  <main class="container ">
+    <div class="container-fluid bg-body-tertiary">
       <!--search bar!-->
-      <form class="d-flex" action="{{ url_for('search_article') }}" method="get">
-        <input class="form-control me-2" name="search" type="search" placeholder="Rechercher dans le catalogue" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
-        <div class="container">
-          <div><h3>Filtres</h3></div>
-          <input type="checkbox" class="btn-check" id="btn-check-outlined" name="nom" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btn-check-outlined">Nom d'établissement</label>
+      <br>
+      <form action="/recherche" method="post">
+          <div class ="container d-flex">
+            <input class="form-control me-2" name="search" type="search" placeholder="Recherche" aria-label="Search">
+            <button class="btn btn-outline-secondary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+            <br>
+          <div class ="container-fluid d-flex ">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex justify-content-center">
+              <h3>Filtres</h3>
+            </div>
 
-          <input type="checkbox" class="btn-check" id="btn-check-outlined" name="proprietaire" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btn-check-outlined">Propritaire</label>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 " >
+              <input type="radio" class="btn-check" name="options" id="option1" value="etablissement" autocomplete="off">
+              <label class="btn btn-secondary" for="option1"><i class="fa-solid fa-shop"></i> Etablissement</label>
 
-          <input type="checkbox" class="btn-check" id="btn-check-outlined"  name="rue" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btn-check-outlined">Rue</label>
-        </div>
+              <input type="radio" class="btn-check" name="options" id="option2" value="proprietaire" autocomplete="off">
+              <label class="btn btn-secondary" for="option2"><i class="fa-solid fa-user-tie"></i> Propriétaire</label>
+
+              <input type="radio" class="btn-check" name="options" id="option3" value="adresse" autocomplete="off">
+              <label class="btn btn-secondary" for="option3"><i class="fa-solid fa-road"></i> Nom de rue</label>
+            </div>
+          </div>
       </form>
+      <br>
       <!--search bar!-->
-
     </div>
   </main>
   <br>

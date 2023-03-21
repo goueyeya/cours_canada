@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}GastroPolice.ca: Recherche '{{ search }}'{% endblock %}
+{% block content %}
+<main>
+  <br>
+  <div class="container">
+    <h3 class="pb-3 mb-4 font-italic border-bottom">Résultat(s) de la recherche '{{ search }}'</h3>
+    <div class="row container justify-content-center ">
+    {% for restaurant in restaurants %}
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="card text-white bg-info mb-3" >
+          <div class="card-header"><small>{{ restaurant["adresse"] }}, {{ restaurant["ville"] }}</small></div>
+          <div class="card-body">
+            <h5 class="card-title"><u>{{ restaurant["etablissement"] }}</u>(<i>{{ restaurant["statut"]}}</i> depuis le {{ restaurant["date_statut"] }})</h5>
+            <p class="card-text">{{ restaurant["description"] }} <br> Enquête du <i>{{ restaurant["date"] }}</i></p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Identifiant de la poursuite: {{ restaurant["id_poursuite"] }} </small><br>
+            <small class="text-muted">Propriétaire: {{ restaurant["proprietaire"] }}</small><br>
+            <small class="text-muted">Identifiant restaurant: {{ restaurant["business_id"] }}</small><br>
+            <small class="text-muted">Date de jugement: {{ restaurant["date_jugement"] }}</small><br>
+            <small class="text-muted">Montant de l'amende : {{ restaurant["montant"] }} CAD</small>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  <br>
+</main>
+{% endblock %}
