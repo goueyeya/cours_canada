@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TP ajax</title>
+</head>
+<body>
+  <select id="champ-persons" name="persons">
+    <option value="">Aucun</option>
+    {% for person in persons %}
+      <option value="{{ person[0] }}"> {{ person[1] }} {{ person[2] }}</option>
+    {% endfor %}
+  </select>
+  <div id="infos">
+  </div>
+  <script src="/js/script.js"></script>
+</body>
+</html>
