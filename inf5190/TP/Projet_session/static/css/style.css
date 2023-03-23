@@ -1,2 +1,11 @@
 @charset "UTF-8";
 
+.img-404{
+  height: 200px;
+  width: 200px;
+}
+
+.img-404-sm{
+  height: 100px;
+  width: 100px;
+}

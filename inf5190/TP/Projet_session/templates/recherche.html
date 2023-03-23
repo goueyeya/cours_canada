@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 {% block title %}GastroPolice.ca: Recherche '{{ search }}'{% endblock %}
 {% block content %}
-<main>
+<main class="container">
   <br>
+  {% if restaurants|length < 1 %}
+    <h3 class="pb-3 mb-4 font-italic border-bottom">Désolé, nous n'avons trouvé aucune correspondance pour les restaurants <span class="text-info">{{ search }}</span></h3>
+  {% else %}
   <div class="container">
     <h3 class="pb-3 mb-4 font-italic border-bottom">Résultat(s) de la recherche '{{ search }}'</h3>
     <div class="row container justify-content-center ">
@@ -27,5 +30,6 @@
     </div>
   </div>
   <br>
+  {% endif %}
 </main>
 {% endblock %}

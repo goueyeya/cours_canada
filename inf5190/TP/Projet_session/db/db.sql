@@ -1,6 +1,6 @@
 create table contrevenant (
   id integer primary key,
-  id_poursuite integer,
+  id_poursuite integer unique,
   business_id integer,
   date text,
   description varchar(500),

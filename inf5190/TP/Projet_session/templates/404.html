@@ -8,8 +8,12 @@
       <h1 class="display-1 fw-bold">404</h1>
       <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
       <p class="lead">Ce que vous cherchez n'est pas ici !</p>
-      <img src="{{ url_for('static', filename = 'img/lost.png') }}"><br>
+      <div class="d-flex align-items-center justify-content-center">
+        <img src="{{ url_for('static', filename = 'img/restaurant.png') }} "class="img-404-sm">
+        <img src="{{ url_for('static', filename = 'img/lost.png') }}" class="img-404"><br>
+      </div>
       <a class="link-light" href="https://www.flaticon.com/free-icons/lost" title="lost icons">Lost icons created by Freepik - Flaticon</a>
+      <a class ="link-light" href="https://www.flaticon.com/fr/icones-gratuites/endroit" title="endroit icônes">Endroit icônes créées par Freepik - Flaticon</a>
       <br>
       <a href="{{ url_for('display_index_page') }}" class="btn btn-danger">Accueil</a>
     </div>
