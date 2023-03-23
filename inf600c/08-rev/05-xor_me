@@ -1,0 +1,7 @@
+(on peut le brut force)-> on trouve 6 et 38
+
+ou
+
+on remarque que le fichier fais un xor sur une chaine de caractere prédéfinie.
+on peut donc supposer que le flag commence par i, F, f, ou i et sur un comparateur en ligne on teste toute les combinaisons possibles.
+on touve donc pour f : 6 qui donne un flag et et pour F 38.

@@ -1,0 +1,28 @@
+unknown:
+    mov ebp, esp -> le prgm met le stack pointer sur la pile
+    push ebp -> met l'adresse de ebp sur le stack
+    xor eax, eax -> met eax à 0
+    mov ecx, 0xffffffff -> met 4294967295 dans ecx
+    mov edi, [ebp+0x8] -> met le contenu de ebp+8 un string passdans edi 
+    repne scasb -> boucle qui permet de trouver la longueur du string dans edix
+    not ecx
+    mov edx, ecx
+    shr ecx, 0x2
+    mov edi, [ebp+0x4]
+    mov esi, [ebp+0x8] 
+    rep movsd -> le prgm copie le contenue de edi dans esi mais avec des blocs de 4bytes
+    mov ecx, edx
+    and ecx, 0x3
+    rep movsb
+    pop ebp
+    ret
+Ce programme en assembleur effectue une opération de copie de mémoire d'un emplacement source vers un emplacement de destination. Voici une explication ligne par ligne:
+
+mov ebp, esp: Copie la valeur actuelle du pointeur de pile (ESP) dans la base de pile (EBP).
+push ebp: Empile la valeur de la base de pile actuelle sur la pile.
+xor eax, eax: Effectue un XOR avec le registre EAX pour le mettre à zéro.
+mov ecx, 0xffffffff: Initialise le registre ECX à -1 (tous les bits sont à 1), qui est utilisé plus tard pour déterminer la longueur de la chaîne source.
+mov edi, [ebp+0x8]: Copie l'adresse de la chaîne source dans le registre EDI.
+repne scasb: Recherche la fin de la chaîne source en comparant les octets de la chaîne avec la valeur de 0x00. La boucle s'exécute jusqu'à ce que la fin de la chaîne soit trouvée ou jusqu'à ce que le registre ECX soit à zéro. Si la fin de la chaîne n'est pas trouvée, le registre ECX est mis à zéro.
+not ecx: Effectue une inversion bit à bit du registre ECX pour obtenir la longueur de la chaîne source.
+
