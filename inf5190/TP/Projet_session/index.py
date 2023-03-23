@@ -1,7 +1,6 @@
-from flask import Flask
-from flask import g
-from flask import render_template
-from flask import request
+import datetime
+
+from flask import Flask, jsonify, g, render_template, request, abort
 from database import Database
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -14,6 +13,11 @@ scheduler.start()
 @app.errorhandler(404)
 def display_page_not_found(e):
     return render_template("404.html", error=e), 404
+
+
+@app.errorhandler(400)
+def bad_request(e):
+    return jsonify(error=str(e)), 400
 
 
 def get_db():
@@ -54,6 +58,33 @@ def display_search():
                          "montant": result[7], "proprietaire": result[8], "ville": result[9], "statut": result[10],
                          "date_statut": result[11], "categorie": result[12]} for result in results))
     return render_template("recherche.html", search=request.form["search"], restaurants=restaurants)
+
+
+def validate(date_debut, date_fin):
+    try:
+        if datetime.date.fromisoformat(date_fin) < datetime.date.fromisoformat(date_debut):
+            return False
+        datetime.date.fromisoformat(date_debut)
+        datetime.date.fromisoformat(date_fin)
+        return True
+    except ValueError:
+        return False
+
+
+@app.route("/api/contrevenants", methods=["GET"])
+def get_contrevenant_by_dates():
+    if not request.args.get("du") or not request.args.get("au"):
+        return abort(400, "Incorrect URL parameters, it is expected to have 'du' and 'au'.")
+    if not validate(request.args.get("du"), request.args.get("au")):
+        return abort(400, "Incorrect date format, should be YYYY-MM-DD.")
+    date_debut = request.args.get("du")
+    date_fin = request.args.get("au")
+    results = get_db().get_contrevenants_by_dates(date_debut, date_fin)
+    dico = [{"id_poursuite": result[0], "business_id": result[1], "date": result[2], "description":
+             result[3], "adresse": result[4], "date_jugement": result[5], "etablissement": result[6],
+             "montant": result[7], "proprietaire": result[8], "ville": result[9], "statut": result[10],
+             "date_statut": result[11], "categorie": result[12]} for result in results]
+    return jsonify(dico), 201
 
 
 if __name__ == '__main__':

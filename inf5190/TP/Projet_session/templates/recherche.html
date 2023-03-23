@@ -4,10 +4,11 @@
 <main class="container">
   <br>
   {% if restaurants|length < 1 %}
-    <h3 class="pb-3 mb-4 font-italic border-bottom">Désolé, nous n'avons trouvé aucune correspondance pour les restaurants <span class="text-info">{{ search }}</span></h3>
+    <h3 class="pb-3 mb-4 font-italic border-bottom">Désolé, nous n'avons trouvé aucune correspondance pour les restaurants "<span class="text-info">{{ search }}</span>"</h3>
+    <p>Retourner à l'<a class="link-success" href="/">accueil</a></p>
   {% else %}
   <div class="container">
-    <h3 class="pb-3 mb-4 font-italic border-bottom">Résultat(s) de la recherche '{{ search }}'</h3>
+    <h3 class="pb-3 mb-4 font-italic border-bottom">Résultat(s) de la recherche "<span class="text-info">{{ search }}</span>"</h3>
     <div class="row container justify-content-center ">
     {% for restaurant in restaurants %}
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
