@@ -1,7 +1,7 @@
 import datetime
 
 from flask import Flask, jsonify, g, render_template, request, abort
-from database import Database
+from db.database import Database
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 
@@ -74,9 +74,9 @@ def validate(date_debut, date_fin):
 @app.route("/api/contrevenants", methods=["GET"])
 def get_contrevenant_by_dates():
     if not request.args.get("du") or not request.args.get("au"):
-        return abort(400, "Incorrect URL parameters, it is expected to have 'du' and 'au'.")
+        return abort(400, "Paramètres d'URL incorrect, il est attendu dans l'URL 'du' et 'au'.")
     if not validate(request.args.get("du"), request.args.get("au")):
-        return abort(400, "Incorrect date format, should be YYYY-MM-DD.")
+        return abort(400, "Format de date incorect. Format de date attendu: YYYY-MM-DD.")
     date_debut = request.args.get("du")
     date_fin = request.args.get("au")
     results = get_db().get_contrevenants_by_dates(date_debut, date_fin)
@@ -84,7 +84,12 @@ def get_contrevenant_by_dates():
              result[3], "adresse": result[4], "date_jugement": result[5], "etablissement": result[6],
              "montant": result[7], "proprietaire": result[8], "ville": result[9], "statut": result[10],
              "date_statut": result[11], "categorie": result[12]} for result in results]
-    return jsonify(dico), 201
+    return jsonify(dico), 200
+
+
+@app.route("/doc", methods=["GET"])
+def display_documentation():
+    return render_template("doc.html")
 
 
 if __name__ == '__main__':
