@@ -2,7 +2,7 @@
 {% block title %}GastroPoliceMTL.ca{% endblock %}
 {% block content %}
   <br>
-  <main class="container ">
+  <main class="container">
     <div class="container-fluid bg-body-tertiary">
       <!--search bar!-->
       <br>
@@ -35,17 +35,17 @@
 
     <br>
     <!-- Recherche Rapide Date -->
-    <div class="container-fluid ">
-      <div class="col-md-4 blog-sidebar bg-body-tertiary d-flex justify-content-center">
+    <div class="container row">
+      <div class="col-md-4 blog-sidebar bg-body-tertiary">
         <h4>Recherche Rapide</h4>
         <div class="row">
           <label for="date_debut">De:</label>
-          <input type="date" id="date_debut">
+          <input type="date" id="date_debut" size="20px">
         </div>
         <br>
         <div class="row">
           <label for="date_fin">Au:</label>
-          <input type="date" id="date_fin">
+          <input type="date" id="date_fin" size="20px">
         </div>
         <br>
         <div class="row">
@@ -54,7 +54,7 @@
       </div>
       <div class="col-md-8 blog-main d-flex justify-content-center">
         <p id="error_table"></p>
-        <table class="table table-dark table-striped" id="table_contrevenant">
+        <table class="table table-info" id="table_contrevenant">
         </table>
       </div>
     </div>
