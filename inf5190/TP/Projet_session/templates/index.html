@@ -2,31 +2,20 @@
 {% block title %}GastroPoliceMTL.ca{% endblock %}
 {% block content %}
   <br>
-  <main class="container">
-    <div class="container-fluid bg-body-tertiary">
+  <main class="container-fluid">
+    <div class="container bg-body-tertiary search-bar">
       <!--search bar!-->
       <br>
       <form action="/recherche" method="post">
           <div class ="container d-flex">
-            <input class="form-control me-2" name="search" type="search" placeholder="Recherche" aria-label="Search">
-            <button class="btn btn-outline-secondary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
-          </div>
-            <br>
-          <div class ="container-fluid d-flex ">
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex justify-content-center">
-              <h3>Filtres</h3>
-            </div>
-
-            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 " >
-              <input type="radio" class="btn-check" name="options" id="option1" value="etablissement" autocomplete="off">
-              <label class="btn btn-secondary" for="option1"><i class="fa-solid fa-shop"></i> Etablissement</label>
-
-              <input type="radio" class="btn-check" name="options" id="option2" value="proprietaire" autocomplete="off">
-              <label class="btn btn-secondary" for="option2"><i class="fa-solid fa-user-tie"></i> Propriétaire</label>
-
-              <input type="radio" class="btn-check" name="options" id="option3" value="adresse" autocomplete="off">
-              <label class="btn btn-secondary" for="option3"><i class="fa-solid fa-road"></i> Nom de rue</label>
-            </div>
+            <select class="select-cat" name="options">
+              <option placeholder="">Catégorie</option>
+              <option name="option1">Etablissement</option>
+              <option name="option2">Propriétaire</option>
+              <option name="option3">Nom de rue</option>
+            </select>
+            <input class="form-control input-key-word me-1" name="search" type="search" placeholder="Mot(s) clé(s)" aria-label="Search">
+            <button class="btn btn-primary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
       </form>
       <br>
@@ -36,16 +25,16 @@
     <br>
     <!-- Recherche Rapide Date -->
     <div class="container row">
-      <div class="col-md-4 blog-sidebar bg-body-tertiary">
-        <h4>Recherche Rapide</h4>
+      <div class="col-md-4 blog-sidebar quick-search">
+        <h4>Recherche</h4>
         <div class="row">
           <label for="date_debut">De:</label>
-          <input type="date" id="date_debut" size="20px">
+          <input type="date" id="date_debut">
         </div>
         <br>
         <div class="row">
           <label for="date_fin">Au:</label>
-          <input type="date" id="date_fin" size="20px">
+          <input type="date" id="date_fin">
         </div>
         <br>
         <div class="row">
@@ -54,7 +43,7 @@
       </div>
       <div class="col-md-8 blog-main d-flex justify-content-center">
         <p id="error_table"></p>
-        <table class="table table-info" id="table_contrevenant">
+        <table class="table table-stripped" id="table_contrevenant">
         </table>
       </div>
     </div>

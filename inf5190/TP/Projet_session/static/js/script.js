@@ -86,5 +86,12 @@ function validateDate(date_debut, date_fin){
 
 document.getElementById("submit_quick_search").addEventListener("click", displayTableau);
 
+// Sélectionnez les deux éléments d'entrée de date
+const date1 = document.getElementById('date_debut');
+const date2 = document.getElementById('date_fin');
 
+// Ajouter un événement de changement de valeur au premier élément de date
+date1.addEventListener('change', (event) => {
+  date2.focus();
+});
 

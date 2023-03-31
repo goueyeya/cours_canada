@@ -1,0 +1,256 @@
+ \documentclass[11pt]{article}
+ % \usepackage[utf8]{inputenc}
+  \usepackage{enumitem}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[left=2cm,top=3cm,right=2cm,bottom=3cm]{geometry}
+\usepackage{graphicx}
+%\usepackage{tikz}
+%\usetikzlibrary{graphdrawing.trees}
+%\usetikzlibrary{arrows, calc, positioning}
+%\usepackage{float, subcaption}
+
+\usepackage{forest}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+\textbf{\Large Université du Qu\'ebec \`a Montr\'eal}
+
+\bigskip
+\bigskip
+
+\textbf{\LARGE INF5130 : Algorithmique}
+
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{\LARGE Devoir 2}
+
+\vspace{0.5em}
+
+\bigskip
+\bigskip
+
+\large
+
+Hiver 2023
+
+\bigskip
+
+\normalsize
+
+\bigskip
+\bigskip
+
+\end{center}
+
+
+
+
+
+\rm
+
+\bigskip
+\bigskip
+
+Nom : \underline{????} \hfill{}  Code permanent : \underline{????} 
+
+\bigskip
+\bigskip
+
+Nom : \underline{????} \hfill{}Code permanent : \underline{????} 
+
+
+\newpage
+
+\thispagestyle{empty}
+
+\underline{Exercice 1} \textbf{(25 points)}
+
+ \begin{center}
+\begin{tabular}{ |l| c c c c c c c|}
+ \hline 
+ $k$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$\\ 
+ \hline 
+ $p_k$ & $0,\!21$ & $0,\!01$ & $0,\!05$ & $0,\!12$ & $0,\!18$ & $0,\!03$ & $0,\!4$ \\
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+
+
+\forestset{
+    treenode/.style = {rectangle, draw, base=top},
+    payoff/.style   = {align=center, base=top}
+    }
+
+\begin{forest}
+  for tree={child anchor=north}
+   [ 	[\texttt{$5$:$0,\!18$},no edge,treenode 
+      		[\texttt{$2$:$0,\!25$},treenode,edge 
+        		[\texttt{$1$:$0,\!1$},treenode,edge ]
+      			[\texttt{$4$:$0,\!12$},treenode,edge 
+      				[\texttt{$3$:$0,\!05$},treenode,edge ]
+      				[\texttt{}, no edge]
+      			]
+      		]
+      		[\texttt{$6$:$0,\!3$},treenode,edge ]
+    	]
+    ]
+  \end{forest}
+\end{center}
+
+
+
+\underline{Exercice 2} \textbf{(25 points)}
+
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ Pénalité & 95 & 85 & 55 & 60  & 50 & 45 & 40 & 30 & 20 & 10 \\ 
+
+  \hline 
+\end{tabular}
+\end{center}
+
+
+\bigskip
+\bigskip
+
+
+\underline{Exercice 3} \textbf{(25 points)}
+ 
+$$\left(\left( x_1 \rightarrow   x_2 \right) \land   x_1 \right)   \lor \lnot x_2 .$$
+
+
+
+\forestset{
+    treenode/.style = {circle, draw, base=top},
+    payoff/.style   = {align=center, base=top}
+    }
+
+ \begin{forest}
+  for tree={child anchor=north,minimum size=8 mm}
+   [ 	[$\lnot$, edge label={node[midway, right]{$y_1$}},treenode  
+      		[$\lnot x_2$]
+      		[$\lor$,treenode,edge label={node[below = -0.15cm,right]{$y_2$}}
+        		[$\to$,treenode,edge label={node[below = -0.15cm,left]{$y_3$}}
+					[$\lnot x_2$]
+        			[$ x_1$]        		
+        		]
+        		[$\land$,treenode,edge label={node[below = -0.15cm,right]{$y_4$}}
+        			[$ x_3$]
+        			[$\lnot x_4$]  
+        		]
+      		]
+    	]
+    ]
+  \end{forest}
+
+\bigskip
+\bigskip
+
+\newpage
+
+\underline{Exercice 4} \textbf{(25 points)}
+
+
+
+
+
+Par exemple pour $m=3$ et $n=3$, si nous avons en entrée la matrice de salaire $S=\left( \begin{matrix}
+0 & 0 & 0   \\
+15 & 20 & 23  \\
+40 & 35 & 45  \\
+62 & 50 & 55  \\
+\end{matrix}  \right)$, cela signifie que l'entreprise $1$ paye $62$ \$ pour $3$ heures et que l'entreprise 3 paye $45$ \$ pour $2$ heures. On peut dans ce cas calculer assez facilement les matrices $SM$ et $NH$ en considérant toutes les combinaisons possibles et on obtient : 
+
+
+
+
+$$SM=\left( \begin{matrix}
+0 & 0 & 0  \\
+15 & 20 & 23  \\
+40 & 40 & 45  \\
+ 62& 62 & 65  \\
+\end{matrix}  \right) \,\,\,  \,\,\,  \,\,\,  \,\,\, NH=\left( \begin{matrix}
+0 & 0 & 0   \\
+ 1& 1 & 1  \\
+2 &0 & 2  \\
+3 & 0 & 2  \\
+\end{matrix}  \right).  $$
+
+Le revenu maximal est ainsi de $65$ \$ pour 2 heures de travail dans l'entreprise $3$ et $1$ heure de travail dans l'entreprise $2$. De manière plus générale, les matrices $SM$ et $NH$ peuvent être calculées selon le schéma dynamique suivant.
+
+\smallskip
+
+\underline{\bf Initialisation} : \hspace{0.44 cm} Pour tout entier  $1\leq j \leq n$, $SM[0][j]=NH[0][j]=0$.
+
+\smallskip
+
+\hspace{3.32 cm} Pour tout entier  $1\leq i \leq m$, $SM[i][1]=S[i][1]$ et $NH[i][1]=i$.
+
+
+\medskip
+
+\underline{\bf Schéma récursif} : Pour tout entier  $1 \leq i \leq m$ et pour tout entier  $2 \leq j \leq n$, on a :
+
+\smallskip
+
+\hspace{3.32 cm} $SM[i][j]=\max_{0\leq k \leq i}\left(SM[i-k][j-1]+S[k][j]  \right)$,
+
+\smallskip
+
+
+\hspace{3.32 cm} $NH[i][j]$ est égal à l'indice $k$ qui donne la valeur maximale dans la formule
+
+ \hspace{3.32 cm} ci-dessus.
+
+\bigskip
+Le coefficient $SM[m][n]$ est alors égal au revenu maximal, et le coefficient $NH[m][n]$ est égal au nombre d'heures qu'il faut travailler dans l'entreprise $n$ pour obtenir ce revenu maximal.
+
+\bigskip
+
+\textbf{\underline{Questions}} : 
+
+\begin{enumerate}[label=\Roman*.]
+
+\item Déterminer les matrices $SM$ et $NH$ \textbf{en utilisant les formules ci-dessus},  si on a en entrée la matrice  suivante (pour $m=5$ heures de travail et $n=4$ entreprises):
+
+
+
+$$S=\left( \begin{matrix}
+0& 0& 0 & 0   \\
+15& 20& 18 & 25   \\
+30& 40& 38 & 35   \\
+45& 54& 59 & 47   \\
+60& 65& 68 & 69   \\
+75& 70& 78 & 80   \\
+\end{matrix}  \right).$$
+
+\textbf{Vous devez expliciter tous les détails de vos calculs.}
+
+\item En déduire le revenu maximal et le nombre d'heures qu'il faut travailler dans chacune des entreprises pour obtenir ce revenu maximal.
+
+\textbf{Vous devez notamment expliquer comment vous obtenez le nombre d'heures travaillées dans chaque entreprise à partir de la matrice $NH$.}
+
+\end{enumerate}
+
+
+
+
+\end{document}
+
+
+
+
+

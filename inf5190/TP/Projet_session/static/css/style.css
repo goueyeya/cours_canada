@@ -9,3 +9,26 @@
   height: 100px;
   width: 100px;
 }
+
+.select-cat{
+  background-color: white;
+  border-radius: 5px 0px 0px 5px;
+  border: 1px solid #dee2e6;
+  border-right: 0px;
+  color: #595c5f;
+}
+
+.search-bar{
+  border-radius: 15px;
+}
+
+.input-key-word{
+  border-radius: 0px 5px 5px 0px;
+}
+
+.quick-search{
+  padding: 10px 30px 10px 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: white;
+}

