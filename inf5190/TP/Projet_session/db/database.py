@@ -70,3 +70,17 @@ class Database:
                        " where date between ? and ?", (date_debut, date_fin))
         results = cursor.fetchall()
         return results
+
+    def get_contrevenant_by_name(self, nom):
+        cursor = self.get_connection().cursor()
+        cursor.execute("select id_poursuite,business_id,date,description,adresse,date_jugement,etablissement," \
+                       "montant,proprietaire,ville,statut,date_statut,categorie from contrevenant" \
+                       " where etablissement=?", (nom, ))
+        results = cursor.fetchall()
+        return results
+
+    def get_contrevenant_names(self):
+        cursor = self.get_connection().cursor()
+        cursor.execute("select etablissement from contrevenant")
+        results = cursor.fetchall()
+        return results

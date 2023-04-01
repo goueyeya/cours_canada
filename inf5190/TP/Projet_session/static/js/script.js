@@ -1,4 +1,4 @@
-function displayTableau() {
+function displayTableau(){
  var error = document.getElementById("error_table"); //contenant pour écrire les messages en cas d'erreur
  const date_debut = document.getElementById("date_debut").value;
  const date_fin = document.getElementById("date_fin").value;
@@ -86,12 +86,40 @@ function validateDate(date_debut, date_fin){
 
 document.getElementById("submit_quick_search").addEventListener("click", displayTableau);
 
-// Sélectionnez les deux éléments d'entrée de date
-const date1 = document.getElementById('date_debut');
-const date2 = document.getElementById('date_fin');
+function displayInfosEtablissement(){
+  const name = document.getElementById("liste_etablissement").value;
+  const container = document.getElementById("container_list");
+  container.innerHTML = "";
+  if(!(name === "")){
+       fetch("/api/contrevenant?name="+name)
+   .then(response => response.json())
+   .then(response => {
+     createInfos(response);
+   })
+   .catch(err => {
+     error.innerHTML =  "Pas de contrevenants trouvés pour ces dates.";
+   });
+  }
+}
 
-// Ajouter un événement de changement de valeur au premier élément de date
-date1.addEventListener('change', (event) => {
-  date2.focus();
-});
+function createInfos(data){
+  const container = document.getElementById("container_list");
+  container.innerHTML = `<br><div class='container bg-light contrevenant'>
+                         <h5>${data[0]["etablissement"]}<i>(${data[0]["statut"]}</i> depuis le ${data[0]["date_statut"]} )</h5>
+                         <small class="text-muted">Adresse: ${data[0]["adresse"]}, ${data[0]["ville"]}</small><br>
+                         <small class="text-muted">Propriétaire: ${data[0]["proprietaire"]}</small><br>
+                         <small class="text-muted">Identifiant restaurant: ${data[0]["business_id"]}</small>
+                         </div><br>`;
 
+  for(var i = 0; i<data.length; i++){
+    container.innerHTML += `<hr><div>
+                            <h6>Contrevenant n°${i+1} :</h6>
+                            <small class="text-muted">Identifiant de la poursuite: ${data[i]["id_poursuite"]} </small><br>
+                            <small class="text-muted">Date de jugement: ${data[i]["date_jugement"]}</small><br>
+                            <small class="text-muted">Montant de l'amende : ${data[i]["montant"]} CAD</small>
+                            <p class="text-muted">Description: ${data[i]["description"]} <i>(Enquête du ${data[i]["date"]})</i></p>
+                            <div>`;
+  }
+}
+
+document.getElementById("submit_search_by_name").addEventListener("click", displayInfosEtablissement)

@@ -45,7 +45,8 @@ def update_database():
 
 @app.route("/", methods=["GET"])
 def display_index_page():
-    return render_template("index.html")
+    liste_etablissement= get_db().get_contrevenant_names()
+    return render_template("index.html", liste=liste_etablissement)
 
 
 @app.route("/recherche", methods=["POST"])
@@ -90,6 +91,19 @@ def get_contrevenant_by_dates():
 @app.route("/doc", methods=["GET"])
 def display_documentation():
     return render_template("doc.html")
+
+
+@app.route("/api/contrevenant", methods=["GET"])
+def get_contrevenants_by_name():
+    if not request.args["name"]:
+        return abort(400, "Paramètres d'URL incorrect, il est attendu dans l'URL 'name'.")
+    nom = request.args["name"]
+    results = get_db().get_contrevenant_by_name(nom)
+    dico = [{"id_poursuite": result[0], "business_id": result[1], "date": result[2], "description":
+             result[3], "adresse": result[4], "date_jugement": result[5], "etablissement": result[6],
+             "montant": result[7], "proprietaire": result[8], "ville": result[9], "statut": result[10],
+             "date_statut": result[11], "categorie": result[12]} for result in results]
+    return jsonify(dico), 200
 
 
 if __name__ == '__main__':

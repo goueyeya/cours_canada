@@ -1,54 +1,79 @@
 {% extends "layout.html" %}
-{% block title %}GastroPoliceMTL.ca{% endblock %}
+{% block title %}MTLGastroPolice.ca{% endblock %}
 {% block content %}
-  <br>
-  <main class="container-fluid">
-    <div class="container bg-body-tertiary search-bar">
-      <!--search bar!-->
-      <br>
-      <form action="/recherche" method="post">
+  <main>
+    <div class="background-image">
+      <br><br>
+      <div class="container search-bar">
+        <!--search bar!-->
+        <form action="/recherche" method="post">
           <div class ="container d-flex">
             <select class="select-cat" name="options">
-              <option placeholder="">Catégorie</option>
-              <option name="option1">Etablissement</option>
-              <option name="option2">Propriétaire</option>
-              <option name="option3">Nom de rue</option>
+              <option value="etablissement">Catégorie</option>
+              <option value="etablissement">Etablissement</option>
+              <option value="proprietaire">Propriétaire</option>
+              <option value="adresse">Nom de rue</option>
             </select>
-            <input class="form-control input-key-word me-1" name="search" type="search" placeholder="Mot(s) clé(s)" aria-label="Search">
+            <input class="form-control input-key-word me-1" name="search" type="search" placeholder="Rechercher dans MTLGastroPolice.ca" aria-label="Search">
             <button class="btn btn-primary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
-      </form>
-      <br>
-      <!--search bar-->
-    </div>
-
-    <br>
-    <!-- Recherche Rapide Date -->
-    <div class="container row">
-      <div class="col-md-4 blog-sidebar quick-search">
-        <h4>Recherche</h4>
-        <div class="row">
-          <label for="date_debut">De:</label>
-          <input type="date" id="date_debut">
-        </div>
-        <br>
-        <div class="row">
-          <label for="date_fin">Au:</label>
-          <input type="date" id="date_fin">
-        </div>
-        <br>
-        <div class="row">
-          <button class="btn btn-outline-secondary" id="submit_quick_search">Rechercher</button>
-        </div>
+        </form>
+        <!--search bar-->
       </div>
-      <div class="col-md-8 blog-main d-flex justify-content-center">
+    </div>
+    <br>
+
+    <div class="container">
+      <div>
+        <h5>Recherche par date</h5>
+        <small>Date de l'enquête, contrevenant entre deux dates</small>
+      </div>
+      <br>
+      <!-- Recherche Rapide Date -->
+      <div class=" bg-dark row quick-search">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="date-picker d-flex justify-content-around">
+            <label for="date_debut">De :</label>
+            <input type="date" id="date_debut">
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="date-picker d-flex justify-content-around">
+            <label for="date_fin">Au :</label>
+            <input type="date" id="date_fin">
+          </div>
+        </div>
+        <button class="button-search btn btn-secondary col-xs-12 col-sm-12 col-md-12 col-lg-12" id="submit_quick_search">Rechercher</button>
+      </div>
+      <br>
+      <div class="container">
         <p id="error_table"></p>
         <table class="table table-stripped" id="table_contrevenant">
-        </table>
-      </div>
+          </table>
+        </div>
     </div>
+    <br><hr>
+    <div class="container">
+      <div>
+        <h5>Liste des restaurants recensés</h5>
+        <small>Affiche tout les contravenants des restaurants inculpés</small>
+      </div>
+      <br>
+      <div class="d-flex justify-content-center">
+        <select class ="me-1" id="liste_etablissement">
+          <option value="">Liste des etablissement</option>
+          {% for etablissement in liste %}
+            <option value="{{ etablissement[0] }}">{{ etablissement[0] }}</option>
+          {% endfor %}
+        </select>
+      <button class="btn btn-secondary button-search-name" id="submit_search_by_name">Afficher</button>
+      </div>
 
+    </div>
+    <div class="container" id="container_list">
+
+    </div>
   </main>
-
-  <br>
+<br>
 {% endblock %}

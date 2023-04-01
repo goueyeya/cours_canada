@@ -10,40 +10,74 @@ annotationTypes:
   monitoringInterval:
     type: integer
 
-/contrevenants:
-  get:
-    description: Récupère la liste des contrevenants entre deux dates.
-    queryParameters:
-      du:
-        description: Date de début
-        required: true
-        type: string
-        example: 2020-05-08
-      au:
-        description: Date de fin
-        required: true
-        type: string
-        example: 2022-05-15
-    responses:
-      200:
-        description: La requête s'est bien passée.
-        body:
-          application/json:
-            example: |
-                      [{
-                        "adresse": "1806 Rue Sainte-Catherine Ouest, Montréal, Québec",
-                        "business_id": 115363,
-                        "categorie": "Restaurant",
-                        "date": "2020-09-10",
-                        "date_jugement": "2021-10-07",
-                        "date_statut": "2017-04-19",
-                        "description": "Le lieu ou le véhicule doit être exempt de contaminants, de polluants, de toute espèce d'animaux y compris les insectes et les rongeurs ou de leurs excréments.",
-                        "etablissement": "RESTAURANT ETOILES DES INDES ENR.",
-                        "id_poursuite": 7843,
-                        "montant": 1000,
-                        "proprietaire": "9353-8783 QUEBEC INC.",
-                        "statut": "Ouvert",
-                        "ville": "Montréal"
-                      }]
-      400:
-        description: La requête est mal écrite. Les dates sont spécifiées selon le format ISO 8601.
+/api:
+  /contrevenants:
+    get:
+      description: Récupère la liste des contrevenants entre deux dates spcécifiées en paramètres.
+      queryParameters:
+        du:
+          description: Date de début
+          required: true
+          type: string
+          example: 2020-05-08
+        au:
+          description: Date de fin
+          required: true
+          type: string
+          example: 2022-05-15
+      responses:
+        200:
+          description: La requête s'est bien passée.
+          body:
+            application/json:
+              example: |
+                        [{
+                          "adresse": "1806 Rue Sainte-Catherine Ouest, Montréal, Québec",
+                          "business_id": 115363,
+                          "categorie": "Restaurant",
+                          "date": "2020-09-10",
+                          "date_jugement": "2021-10-07",
+                          "date_statut": "2017-04-19",
+                          "description": "Le lieu ou le véhicule doit être exempt de contaminants, de polluants, de toute espèce d'animaux y compris les insectes et les rongeurs ou de leurs excréments.",
+                          "etablissement": "RESTAURANT ETOILES DES INDES ENR.",
+                          "id_poursuite": 7843,
+                          "montant": 1000,
+                          "proprietaire": "9353-8783 QUEBEC INC.",
+                          "statut": "Ouvert",
+                          "ville": "Montréal"
+                        }]
+        400:
+          description: La requête est mal écrite. Les dates sont spécifiées selon le format ISO 8601.
+
+  /contrevenant:
+    get:
+      description: Récupère la liste des contrevenants selon le nom d'établissement passé en paramètre.
+      queryParameters:
+        name:
+          description: Nom d'établissement
+          required: true
+          type: string
+          example: BURGER KING
+      responses:
+        200:
+          description: La requête s'est bien passée.
+          body:
+            application/json:
+              example: |
+                        [{
+                          "adresse": "1806 Rue Sainte-Catherine Ouest, Montréal, Québec",
+                          "business_id": 115363,
+                          "categorie": "Restaurant",
+                          "date": "2020-09-10",
+                          "date_jugement": "2021-10-07",
+                          "date_statut": "2017-04-19",
+                          "description": "Le lieu ou le véhicule doit être exempt de contaminants, de polluants, de toute espèce d'animaux y compris les insectes et les rongeurs ou de leurs excréments.",
+                          "etablissement": "RESTAURANT ETOILES DES INDES ENR.",
+                          "id_poursuite": 7843,
+                          "montant": 1000,
+                          "proprietaire": "9353-8783 QUEBEC INC.",
+                          "statut": "Ouvert",
+                          "ville": "Montréal"
+                        }]
+        400:
+          description: La requête est mal écrite.

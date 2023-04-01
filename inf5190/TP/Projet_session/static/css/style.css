@@ -19,7 +19,11 @@
 }
 
 .search-bar{
+  padding: 20px;
   border-radius: 15px;
+  -webkit-backdrop-filter: blur(15px); /* assure la compatibilité avec safari */
+  backdrop-filter: blur(5px);
+  background-color: rgba(182, 182, 182, 0.2);
 }
 
 .input-key-word{
@@ -27,8 +31,45 @@
 }
 
 .quick-search{
-  padding: 10px 30px 10px 30px;
-  border-radius: 10px;
-  border: 1px solid black;
+  border-radius: 5px;
+  padding:15px;
+  background-color: #343a40;
+}
+
+.background-image{
+  height: 50vh;
+  width: 100%;
+  background-image: url("/img/mtl.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: lightgrey;
+  background-position: center;
+}
+.date-picker{
+  border-radius: 5px;
+  padding: 4px;
+  margin-bottom: 10px;
   background-color: white;
+}
+
+.date-picker input{
+  border: 0px;
+}
+
+.button-search{
+  font-size: 18px;
+}
+
+.card-right{
+  border-left: 1px solid #545c64;
+}
+
+.contrevenant{
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.button-search-name{
+  border-radius: 5px 0px 5px 0px;
 }
