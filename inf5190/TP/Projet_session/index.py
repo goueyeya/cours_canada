@@ -134,5 +134,8 @@ def send_email(contrevenants):
     server.quit()
 
 
+# def tweet_new_contrevenant(contrevenants):
+
+
 if __name__ == '__main__':
     app.run(debug=True)
