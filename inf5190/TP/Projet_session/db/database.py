@@ -3,6 +3,18 @@ import requests
 import csv
 from db.get_data import convert_to_iso
 
+# url des données libres de Montreal
+csv_url = " https://data.montreal.ca/dataset/05a9e718-6810-4e73-8bb9-5955efeb91a0/resource" \
+          "/7f939a08-be8a-45e1-b208-d8744dca8fc6/download/violations.csv"
+
+upsert = "insert into contrevenant (id_poursuite,business_id,date,description,adresse,date_jugement," \
+         "etablissement,montant,proprietaire,ville,statut,date_statut,categorie) VALUES (?, ?, ?, ?, ?, ?, ?," \
+         "?, ?, ?, ?, ?, ?) on conflict(id_poursuite) do update set id_poursuite=excluded.id_poursuite, " \
+         "business_id=excluded.business_id,date=excluded.date,description=excluded.description," \
+         "adresse=excluded.adresse,date_jugement=excluded.date_jugement,etablissement=excluded.etablissement," \
+         "montant=excluded.montant,proprietaire=excluded.proprietaire,ville=excluded.ville," \
+         "statut=excluded.statut,date_statut=excluded.date_statut,categorie=excluded.categorie;"
+
 
 class Database:
 
@@ -40,18 +52,6 @@ class Database:
 
     def update_bd(self):
         cursor = self.get_connection().cursor()
-        # url des données libres de Montreal
-        csv_url = " https://data.montreal.ca/dataset/05a9e718-6810-4e73-8bb9-5955efeb91a0/resource" \
-                  "/7f939a08-be8a-45e1-b208-d8744dca8fc6/download/violations.csv"
-
-        upsert = "insert into contrevenant (id_poursuite,business_id,date,description,adresse,date_jugement," \
-                 "etablissement,montant,proprietaire,ville,statut,date_statut,categorie) VALUES (?, ?, ?, ?, ?, ?, ?," \
-                 "?, ?, ?, ?, ?, ?) on conflict(id_poursuite) do update set id_poursuite=excluded.id_poursuite, " \
-                 "business_id=excluded.business_id,date=excluded.date,description=excluded.description," \
-                 "adresse=excluded.adresse,date_jugement=excluded.date_jugement,etablissement=excluded.etablissement," \
-                 "montant=excluded.montant,proprietaire=excluded.proprietaire,ville=excluded.ville," \
-                 "statut=excluded.statut,date_statut=excluded.date_statut,categorie=excluded.categorie;"
-
         with requests.get(csv_url, stream=True) as response:
             data = (line.decode('utf-8') for line in response.iter_lines())
             reader = csv.reader(data)
@@ -75,12 +75,31 @@ class Database:
         cursor = self.get_connection().cursor()
         cursor.execute("select id_poursuite,business_id,date,description,adresse,date_jugement,etablissement," \
                        "montant,proprietaire,ville,statut,date_statut,categorie from contrevenant" \
-                       " where etablissement=?", (nom, ))
+                       " where etablissement=?", (nom,))
         results = cursor.fetchall()
         return results
 
     def get_contrevenant_names(self):
         cursor = self.get_connection().cursor()
-        cursor.execute("select etablissement from contrevenant")
+        cursor.execute("select distinct etablissement from contrevenant")
         results = cursor.fetchall()
         return results
+
+    def get_new_contrevenants(self):
+        cursor = self.get_connection().cursor()
+        bd = cursor.execute("select id_poursuite,business_id,date,description,adresse,date_jugement,etablissement," 
+                            "montant,proprietaire,ville,statut,date_statut,categorie from contrevenant").fetchall()
+        new_bd = []
+        with requests.get(csv_url, stream=True) as response:
+            data = (line.decode('utf-8') for line in response.iter_lines())
+            reader = csv.reader(data)
+            next(reader)  # échappe la 1ere ligne du csv
+            for row in reader:
+                row[0], row[1], row[7] = int(row[0]), int(row[1]), int(row[7])
+                row[2] = convert_to_iso(row[2])
+                row[5] = convert_to_iso(row[5])
+                row[11] = convert_to_iso(row[11])
+                new_bd.append(tuple(row))
+        # créer une liste des nouveaux éléments sans doublons
+        new_contrevenants = list(set([cont for cont in new_bd if cont[0] not in [cont2[0] for cont2 in bd]]))
+        return ([c[6], c[4]] for c in new_contrevenants)

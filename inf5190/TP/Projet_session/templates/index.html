@@ -60,19 +60,17 @@
         <small>Affiche tout les contravenants des restaurants inculpés</small>
       </div>
       <br>
-      <div class="d-flex justify-content-center">
-        <select class ="me-1" id="liste_etablissement">
+      <div class="container-fluid d-flex justify-content-center">
+        <select class ="me-2 col-xs-12 col-sm-8 col-md-8 col-lg-8" id="liste_etablissement ">
           <option value="">Liste des etablissement</option>
           {% for etablissement in liste %}
             <option value="{{ etablissement[0] }}">{{ etablissement[0] }}</option>
           {% endfor %}
         </select>
-      <button class="btn btn-secondary button-search-name" id="submit_search_by_name">Afficher</button>
+      <button class="button-search-name btn btn-secondary col-xs-12 col-sm-4 col-md-4 col-lg-4" id="submit_search_by_name">Afficher</button>
       </div>
-
     </div>
     <div class="container" id="container_list">
-
     </div>
   </main>
 <br>
