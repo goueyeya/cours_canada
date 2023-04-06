@@ -91,12 +91,13 @@ function displayInfosEtablissement(){
   const container = document.getElementById("container_list");
   container.innerHTML = "";
   if(!(name === "")){
-       fetch("/api/contrevenant?name="+name)
+       fetch("/api/contrevenant?name="+encodeURIComponent(name))
    .then(response => response.json())
    .then(response => {
      createInfos(response);
    })
    .catch(err => {
+     console.log(err);
      error.innerHTML =  "Pas de contrevenants trouvés pour ces dates.";
    });
   }

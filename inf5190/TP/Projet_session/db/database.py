@@ -103,3 +103,10 @@ class Database:
         # créer une liste des nouveaux éléments sans doublons
         new_contrevenants = list(set([cont for cont in new_bd if cont[0] not in [cont2[0] for cont2 in bd]]))
         return ([c[6], c[4]] for c in new_contrevenants)
+
+    def get_liste_etablissement(self):
+        cursor = self.get_connection().cursor()
+        cursor.execute("select etablissement, count(*) AS nb_infractions from contrevenant "
+                       "group by etablissement order by nb_infractions DESC;")
+        liste = cursor.fetchall()
+        return liste

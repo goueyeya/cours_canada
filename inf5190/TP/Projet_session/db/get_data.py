@@ -33,3 +33,4 @@ def create_db():
             row[11] = convert_to_iso(row[11])
             cursor.execute(insert, row)
         co.commit()
+

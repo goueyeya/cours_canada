@@ -1,7 +1,6 @@
 #%RAML 1.0
 title: API des établissements alimentaires condamnés de la Ville de Montréal
 baseUri: http://localhost:5000/api
-mediaType: application/json
 
 uses:
   assets: assets.lib.raml
@@ -81,3 +80,28 @@ annotationTypes:
                         }]
         400:
           description: La requête est mal écrite.
+  /etablissements:
+    /json:
+      get:
+        description: Affiche la liste des établissements ayant commis une ou plusieurs infractions au format json.
+        responses:
+          200:
+            description: La requête s'est bien passée.
+            body:
+              application/json:
+    /xml:
+      get:
+        description: Affiche la liste des établissements ayant commis une ou plusieurs infractions au format xml.
+        responses:
+          200:
+            description: La requête s'est bien passée.
+            body:
+              application/xml:
+    /csv:
+      get:
+        description: Affiche la liste des établissements et  ayant commis une ou plusieurs infractions au format csv.
+        responses:
+          200:
+            description: La requête s'est bien passée.
+            body:
+              text/csv:

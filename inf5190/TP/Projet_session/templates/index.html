@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}MTLGastroPolice.ca{% endblock %}
+{% block title %}MTLGastroPolice : Cherchez les restaurants condamnés de Montréal{% endblock %}
 {% block content %}
   <main>
     <div class="background-image">
@@ -61,7 +61,7 @@
       </div>
       <br>
       <div class="container-fluid d-flex justify-content-center">
-        <select class ="me-2 col-xs-12 col-sm-8 col-md-8 col-lg-8" id="liste_etablissement ">
+        <select class ="me-2 col-xs-12 col-sm-8 col-md-8 col-lg-8" id="liste_etablissement">
           <option value="">Liste des etablissement</option>
           {% for etablissement in liste %}
             <option value="{{ etablissement[0] }}">{{ etablissement[0] }}</option>

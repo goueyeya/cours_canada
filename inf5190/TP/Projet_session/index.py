@@ -1,9 +1,13 @@
+import csv
 import datetime
 import smtplib
+import tempfile
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from xml.dom import minidom
+import requests
 import yaml
-from flask import Flask, jsonify, g, render_template, request, abort
+from flask import Flask, jsonify, g, render_template, request, abort, Response
 from db.database import Database
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -134,7 +138,61 @@ def send_email(contrevenants):
     server.quit()
 
 
-# def tweet_new_contrevenant(contrevenants):
+def post_tweet(contrevenants, token):
+    body = "Voici la liste de tous les nouveaux contrevenants:\n" + "\n" \
+        .join("- " + cont[0] + "," + cont[1] for cont in contrevenants) + "\nMise à jour du :" + \
+           datetime.datetime.today().strftime('%d-%m-%y %H:%M:%S') + \
+           ".\n\nL'équipe MTLGastroPolice."
+    return requests.request(
+        "POST",
+        "https://api.twitter.com/2/tweets",
+        json={"text": body},
+        headers={
+            "Authorization": "Bearer {}".format(token),
+            "Content-Type": "application/json",
+        },
+    )
+
+
+@app.route("/api/etablissements/json", methods=["GET"])
+def get_liste_etablissements():
+    liste = get_db().get_liste_etablissement()
+    dico = [{"Etablissement": {"Nom": li[0], "Nombre d'infractions": li[1]}} for li in liste]
+    return jsonify(dico), 200
+
+
+@app.route("/api/etablissements/xml", methods=["GET"])
+def get_liste_etablissement_xml():
+    liste = get_db().get_liste_etablissement()
+    doc = minidom.Document()  # Créer un document XML vide
+    root = doc.createElement("etablissements")  # Créer l'élément racine
+    doc.appendChild(root)
+    for etablissement in liste:
+        etab = doc.createElement("etablissement")  # Créer l'élément enfant et l'ajouter à l'élément racine
+        root.appendChild(etab)
+        name = doc.createElement("name")  # partie nom
+        name_text = doc.createTextNode(etablissement[0])
+        name.appendChild(name_text)
+        etab.appendChild(name)
+        nb_infrac = doc.createElement("nombre_infractions")  # partie nb infractions
+        nb_infrac_text = doc.createTextNode(str(etablissement[1]))
+        nb_infrac.appendChild(nb_infrac_text)
+        etab.appendChild(nb_infrac)
+    xml_string = doc.toxml(encoding='UTF-8')
+    return Response(xml_string, mimetype='application/xml'), 200
+
+
+@app.route("/api/etablissements/csv", methods=["GET"])
+def get_liste_etablissements_csv():
+    liste = get_db().get_liste_etablissement()
+    with tempfile.TemporaryFile(mode='w+', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["Nom_Etablissement", "Nombre_infractions"])
+        for etab in liste:
+            writer.writerow([etab[0], etab[1]])
+        csv_file.seek(0)
+        csv_data = csv_file.read()
+    return Response(csv_data, mimetype='text/csv')
 
 
 if __name__ == '__main__':
