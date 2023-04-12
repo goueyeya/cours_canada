@@ -1,4 +1,4 @@
-# classe qui gère les connexion et les récupération de
+# classe qui gère les connexions et les récupérations de
 # données de la bd
 import sqlite3
 import requests
@@ -62,12 +62,12 @@ class Database:
                            "date_statut,categorie from contrevenant"
                            " where etablissement like "
                            "'%'||?||'%'", (recherche,))
-        else:
+        elif filtre == "proprietaire":
             cursor.execute("select id_poursuite,business_id,date,"
                            "description,adresse,date_jugement,etablissement,"
                            "montant,proprietaire,ville,statut,"
                            "date_statut,categorie from contrevenant"
-                           " where adresse like '%'||?||'%'", (recherche,))
+                           " where proprietaire like '%'||?||'%'", (recherche,))
         resultats = cursor.fetchall()
         return resultats
 
