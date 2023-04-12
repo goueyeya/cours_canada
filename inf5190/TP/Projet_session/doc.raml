@@ -9,6 +9,60 @@ annotationTypes:
   monitoringInterval:
     type: integer
 
+types:
+  User:
+    type: object
+    properties:
+      nom_complet:
+        description: Nom et prénom de l'utilisateur
+        required: true
+        type: string
+      email:
+        description: Email de l'utilisateur
+        required: true
+        type: string
+      etablissements:
+        description: Liste des établissements à surveiller
+        required: true
+        type: array
+        properties:
+          type: string
+      password:
+        description: Mot de passe de l'utilisateur
+        required: true
+        type: string
+  Demande:
+    type: object
+    properties:
+      nom_etablissement:
+        description: Nom d'établissement
+        required: true
+        type: string
+      adresse:
+        description: Adresse de l'établissement
+        required: true
+        type: string
+      ville:
+        description: ville où se situe l'établissement
+        required: true
+        type: string
+      date_visite:
+        description: Date de la visite du client
+        required: true
+        type: string
+      nom:
+        description: Nom du client
+        required: true
+        type: string
+      prenom:
+        description: Prénom du client
+        required: true
+        type: string
+      description_probleme:
+        description: Description du problème observé
+        required: true
+        type: string
+
 /api:
   /contrevenants:
     get:
@@ -105,3 +159,49 @@ annotationTypes:
             description: La requête s'est bien passée.
             body:
               text/csv:
+  /demande:
+    post:
+      description: Réalisez une demande d'inspection à la ville de Montréal.
+      body:
+        application/json:
+          type: Demande
+          example: {"nom_etablissement": "BURGER KING", "adresse": "203 Victoria St", "ville": "Montréal", "date_visite": 2023-01-01, "nom": "Monsieur", "prenom": "Propre", "description_probleme": "Il y a une pésence de rats."}
+      responses:
+        201:
+          description: La demande a été correctement envoyée.
+          body:
+            application/json:
+              example: |
+                     {
+                      "adresse": "800 Victoria Street",
+                      "date_visite": "2023-08-30",
+                      "description_probleme": "Il y a des rats",
+                      "id": 2,
+                      "nom": "Gaëtan",
+                      "nom_etablissement": "Macdo",
+                      "prenom": "Oueyeya",
+                      "ville": "Longueil"
+                     }
+        400:
+          description: La requête n'est pas correctement écrite.
+    /{id}:
+      delete:
+        description: Supprimer une demande spécifiée avec son id.
+        responses:
+          200:
+            description: La demande a été correctement supprimée.
+          404:
+            description: La demande spécifiée par son id n'existe pas.
+
+  /utilisateur:
+    post:
+      description: Créez vous un compte utilisateur.
+      body:
+        application/json:
+          type: User
+          example : {"nom_complet": "John Doe", "email": "jdoe@gmail.com", "etablissements" : ["La Banquise", "St Viateur Bagel"],  "password" : "test123"}
+      responses:
+        201:
+          description: Le compte utilisateur a correctement été créé.
+        409:
+          description: L'email entré existe déja.

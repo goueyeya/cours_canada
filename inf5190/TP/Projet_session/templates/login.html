@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}GastroPolice.ca: Connexion{% endblock %}
+{% block content %}
+<main>
+  <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+              <h1 class="mb-4">Connexion</h1>
+              <form class="form-card"  action="/connexion" method="post">
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                      <br>
+                        <div class="alert alert-warning" role="alert">
+                          {{ message }}
+                        </div>
+                      <br>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                  <div class="form-group">
+                      <label for="email">Adresse mail :</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre adresse mail" required>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <label for="password">Mot de passe :</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Se connecter</button>
+                  <br>
+              </form>
+          </div>
+      </div>
+  </div>
+</main>
+{% endblock %}

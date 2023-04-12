@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}MTLGastroPolice : Confirmation de formulaire{% endblock %}
+{% block content %}
+<main>
+  <br>
+  <div class="container">
+	<h1>Confirmation de formulaire</h1>
+    <br>
+    <div class="d-flex align-items-center justify-content-center">
+      <img src="{{ url_for('static', filename = 'img/letter.png') }}">
+    </div>
+    <div>
+      <a class="link-light" href="https://www.flaticon.com/free-icons/letter" title="letter icons">Letter icons created by Flat Icons - Flaticon</a>
+      <p>Demande envoyée avec succès. Elle sera traitée dans les plus bref délais.</p>
+      <p>Retourner à l'<a class="link-success" href="/">accueil</a></p>
+    </div>
+  </div>
+</main>
+{% endblock %}

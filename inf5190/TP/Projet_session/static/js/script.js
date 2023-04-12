@@ -1,3 +1,4 @@
+// récpère les données et affiche le tableau
 function displayTableau(){
  var error = document.getElementById("error_table"); //contenant pour écrire les messages en cas d'erreur
  const date_debut = document.getElementById("date_debut").value;
@@ -44,6 +45,7 @@ function createTableau(data){
  }
 }
 
+// créé les listes d'établissement
 function createLists(data){
    var listeEtablissement = new Array();
    var nbContravenants = new Array();
@@ -84,6 +86,7 @@ function validateDate(date_debut, date_fin){
    }
 }
 
+// déclenche un évenement quand la recherche est lancée
 document.getElementById("submit_quick_search").addEventListener("click", displayTableau);
 
 function displayInfosEtablissement(){
@@ -102,7 +105,7 @@ function displayInfosEtablissement(){
    });
   }
 }
-
+ // affiche les infos sur un contrevenants
 function createInfos(data){
   const container = document.getElementById("container_list");
   container.innerHTML = `<br><div class='container bg-light contrevenant'>
@@ -122,5 +125,5 @@ function createInfos(data){
                             <div>`;
   }
 }
-
+// déclenche un évenement quand la recherche est lancée
 document.getElementById("submit_search_by_name").addEventListener("click", displayInfosEtablissement)

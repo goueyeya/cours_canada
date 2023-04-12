@@ -73,3 +73,21 @@
 .button-search-name{
   border-radius: 2px;
 }
+
+.form-card{
+  border: 0.5px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 30px;
+}
+
+.img-profil{
+  height: 200px;
+  width: 200px;
+}
+
+.img-profil-min{
+  height: 22px;
+  width: 22px;
+  border: 1px solid white;
+}

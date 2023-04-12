@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block title %}MTLGastroPolice : Formulaire de demande d'inspection{% endblock %}
+{% block content %}
+  <br>
+  <main>
+    <div class="container">
+      <!-- Titre -->
+      <div class="container-fluid">
+        <h1>Demande d'inspection d'un restaurant</h1>
+      </div>
+      <br>
+      <div class="container">
+        <p>Notre formulaire de plainte est conçu pour permettre aux visiteurs de notre site de faire une plainte
+          concernant un restaurant. </p>
+        <p>Les champs marqués d'une étoile (*) sont obligatoires.</p>
+      </div>
+      <br>
+      <!-- Formulaire -->
+      <div class="container-fluid">
+        <form id="formulaire_plainte">
+          <div class="row">
+            <!-- Partie identification de la personne -->
+            <div class="col-md-6">
+              <h2>Identification de la personne</h2>
+              <div class="form-group">
+                <label for="nom">Nom* :</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom* :</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" required>
+              </div>
+            </div>
+            <!-- Partie identification du restaurant -->
+            <div class="col-md-6">
+              <h2>Identification du restaurant</h2>
+              <div class="form-group">
+                <label for="nom_etablissement">Nom de l'établissement* :</label>
+                <input type="text" class="form-control" id="nom_etablissement" name="nom_etablissement" required>
+              </div>
+              <div class="form-group">
+                <label for="adresse">Adresse* :</label>
+                <input type="text" class="form-control" id="adresse" name="adresse" required>
+              </div>
+              <div class="form-group">
+                <label for="ville">Ville* :</label>
+                <input type="text" class="form-control" id="ville" name="ville" required>
+              </div>
+              <div class="form-group">
+                <label for="date_visite">Date de visite* :</label>
+                <input type="date" class="form-control" id="date_visite" name="date_visite" required>
+              </div>
+            </div>
+          </div>
+          <br>
+          <!-- Partie objet de la plainte -->
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Objet de la plainte</h2>
+              <div class="form-group">
+                <label for="description_probleme">Description du problème observé* :</label>
+                <textarea class="form-control" id="description_probleme" name="description_probleme" rows="5" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <br>
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+          </div>
+        </form>
+      </div>
+      <div class="container" id="container_reponse">
+      </div>
+    </div>
+  </main>
+  <br>
+<script src="{{ url_for('static', filename = 'js/script_form.js') }}"></script>
+{% endblock %}

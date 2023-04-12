@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block title %}GastroPolice.ca: Bienvenue {{ user[1] }}{% endblock %}
+{% block content %}
+<main>
+  <br>
+  <div class="container">
+    <h2>Compte</h2>
+    <hr>
+    <div class="container">
+      <h5>Photo de profil</h5>
+      <br>
+      <div class="container" id="container_image">
+        <img src="/display_picture/{{ session['id_img'] }}.png" class='rounded mx-auto d-block img-profil' alt='img_profil'>
+      </div>
+      <br>
+      <form enctype="multipart/form-data" id="formulaire_image">
+        <div class="form-group" >
+          <label for="photo">Téléverser une photo :</label>
+          <input type="file" class="form-control-file" id="photo" accept="image/jpeg,image/png">
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          <br>
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <br>
+        <button type="submit" class="btn btn-outline-primary" id="btn_save_img">Enregistrer</button>
+      </form>
+    </div>
+    <hr>
+    <div class="container">
+      <h5>Informations Personnelles</h5>
+      <br>
+      <div>
+        <small>Nom complet</small>
+        <p>{{ user[1] }}</p>
+      </div>
+      <div>
+        <small>Email</small>
+        <p>{{ user[2] }}</p>
+      </div>
+      <br>
+    </div>
+    <hr>
+    <div class="container">
+      <h5>Liste des établissements à surveiller</h5>
+      <br>
+      <form id="formulaire_etablissement">
+        <div class="form-group">
+          <label for="etablissements">Noms d'établissements :</label>
+          <textarea class="form-control" id="etablissements">{{ user[3] }}</textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
+        <br>
+      </form>
+    </div>
+    <hr>
+    <div class="container">
+      <h5>Se déconnecter</h5>
+      <br>
+      <div>
+        <form action="/logout">
+          <button class="btn btn-outline-danger" type="submit"> Se déconnecter</button>
+        </form>
+      </div>
+      <br>
+    </div>
+  </div>
+</main>
+<script src="{{ url_for('static', filename = 'js/script_account.js') }}"></script>
+{% endblock %}

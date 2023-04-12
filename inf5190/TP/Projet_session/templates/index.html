@@ -60,8 +60,8 @@
         <small>Affiche tout les contravenants des restaurants inculpés</small>
       </div>
       <br>
-      <div class="container-fluid d-flex justify-content-center">
-        <select class ="me-2 col-xs-12 col-sm-8 col-md-8 col-lg-8" id="liste_etablissement">
+      <div class="row container-fluid d-flex justify-content-center">
+        <select class ="col-xs-12 col-sm-8 col-md-8 col-lg-8" id="liste_etablissement">
           <option value="">Liste des etablissement</option>
           {% for etablissement in liste %}
             <option value="{{ etablissement[0] }}">{{ etablissement[0] }}</option>
@@ -74,4 +74,5 @@
     </div>
   </main>
 <br>
+<script src="{{ url_for('static', filename = 'js/script.js') }}"></script>
 {% endblock %}

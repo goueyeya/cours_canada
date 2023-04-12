@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}MTLGastroPolice : Confirmation de l'inscription{% endblock %}
+{% block content %}
+<main>
+  <br>
+  <div class="container">
+	<h1>Confirmation de l'inscription</h1>
+    <br>
+    <div class="d-flex align-items-center justify-content-center">
+      <img src="{{ url_for('static', filename = 'img/user-account.png') }}">
+    </div>
+    <a class="link-light" href="https://www.flaticon.com/free-icons/create-account" title="create account icons">Create account icons created by Triam Studio - Flaticon</a>
+    <div class="d-flex align-items-center justify-content-center">
+      <p>Compte créé avec succès. </p>
+      <p>Cliquez <a class="link-success" href="/login">ici</a> pour vous connecter</p>
+    </div>
+  </div>
+</main>
+{% endblock %}

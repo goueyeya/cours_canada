@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}GastroPolice.ca: Inscription{% endblock %}
+{% block content %}
+<main>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <h1 class="mb-4">Inscription</h1>
+        <br>
+        <p>Les champs marqués d'une étoile (*) sont obligatoires.</p>
+
+        <div id="error"></div>
+        <form class="form-card" id="formulaire_sub">
+          <div class="form-group">
+            <label for="nom_complet">Nom complet* :</label>
+            <input type="text" class="form-control" id="nom_complet" placeholder="Entrez votre nom complet" required>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="email">Adresse mail* :</label>
+            <input type="email" class="form-control" id="email" placeholder="Entrez votre adresse mail" required>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="etablissements">Établissements à surveiller* : (séparez les établissements par des virgules)</label>
+            <input type="text" class="form-control" id="etablissements" placeholder="Entrez l'établissement à surveiller" required>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="password">Mot de passe* :</label>
+            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Créer un compte</button>
+          <br>
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="{{ url_for('static', filename = 'js/script_form_sub.js') }}"></script>
+{% endblock %}

@@ -24,11 +24,28 @@
       </button>
       <!-- hamburger-->
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- lien admin -->
-          <a class="nav-link active" aria-current="page" href="/doc">API</a>
-          <!-- lien admin -->
-        </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/formulaire_plainte">Demande d'inspection</a>
+          </li>
+          <li>
+            <a class="nav-link active" aria-current="page" href="/doc">API</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          {% if "id" not in session %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/login">Se connecter</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/subscribe">S'inscrire</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/account"><img src="/display_picture/{{ session['id_img'] }}.png" class='img-profil-min' alt='img_profil'> Mon compte</a>
+            </li>
+          {% endif %}
+        </ul>
       </div>
     </div>
   </nav>
@@ -60,6 +77,5 @@
   </footer>
   <script src="https://kit.fontawesome.com/78c2888d65.js" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('static', filename = 'js/script.js') }}"></script>
 </body>
 </html>

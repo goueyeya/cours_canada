@@ -14,3 +14,24 @@ create table contrevenant (
   date_statut text,
   categorie varchar(100)
   );
+
+CREATE TABLE user(
+  id INTEGER PRIMARY KEY,
+  nom_complet varchar(100),
+  email TEXT ,
+  etablissements TEXT,
+  password TEXT,
+  salt TEXT
+  );
+
+create table session (
+  id integer primary key,
+  id_session varchar(32),
+  utilisateur_email text
+);
+
+create table image(
+  id varchar(32) primary key,
+  email_user text unique,
+  image blob
+)
