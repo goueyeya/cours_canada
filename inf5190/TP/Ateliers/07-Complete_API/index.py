@@ -5,10 +5,10 @@ from flask import jsonify
 from flask import render_template
 from flask_json_schema import JsonSchema
 from flask_json_schema import JsonValidationError
-from .database import Database
-from .schemas import update_personne_schema
-from .schemas import insert_personne_schema
-from .person import Person
+from database import Database
+from schemas import update_personne_schema
+from schemas import insert_personne_schema
+from person import Person
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 schema = JsonSchema(app)

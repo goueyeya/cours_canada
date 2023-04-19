@@ -57,12 +57,7 @@ Hiver 2023
 \bigskip
 \bigskip
 
-Nom : \underline{????} \hfill{}  Code permanent : \underline{????} 
-
-\bigskip
-\bigskip
-
-Nom : \underline{????} \hfill{}Code permanent : \underline{????} 
+Nom : \underline{Oueyeya Gaëtan} \hfill{}  Code permanent : \underline{OUEG82330306} 
 
 
 \newpage
@@ -81,6 +76,98 @@ Nom : \underline{????} \hfill{}Code permanent : \underline{????}
 \end{tabular}
 \end{center}
 
+\bigskip
+
+\begin{center}
+    $C[1; 1] = p1 = 0,21$ \quad $C[2; 2] = p2 = 0,01$ \quad $C[3; 3] = p3 = 0,05$\\ \smallskip
+    $C[4; 4] = p4 = 0,12$ \quad $C[5; 5] = p5 = 0,18$ \quad $C[6; 6] = p6 = 0,03$\\ \smallskip
+    $C[7; 7] = p7 = 0,4$
+\end{center}
+
+\bigskip
+
+$C[1; 2] = min(\textbf{0 + 0.1} ; 0.21 + 0) + 0.21 + 0.01 = 0.23$\\ \smallskip
+$C[2; 3] = min(0 + 0.5 ; \textbf{0.01 + 0}) + 0.01 + 0.05= 0.07$\\ \smallskip
+$C[3; 4] = min(0 + 0.12 ; \textbf{0.05 + 0}) + 0.05 + 0.12= 0.22$\\ \smallskip
+$C[4; 5] = min(0 + 0.18 ; \textbf{0.12 + 0}) + 0.12 + 0.18= 0.42$\\ \smallskip
+$C[5; 6] = min(\textbf{0 + 0.03} ; 0.18 + 0) + 0.18 + 0.03= 0.24$\\ \smallskip
+$C[6; 7] = min(0 + 0.4 ; \textbf{0.03 + 0}) + 0.4 + 0.03= 0.46$\\ \smallskip
+
+\bigskip
+
+$C[1; 3] = min(\textbf{0 + 0.07} ; 0.21 + 0.05; 0.23 + 0) + 0.21 + 0.01 + 0.05= 0.34$\\ \smallskip
+$C[2; 4] = min(0 + 0.22 ; 0.1 + 0.12; \textbf{0.07 + 0}) + 0.01 + 0.05 + 0.12= 0.25$\\ \smallskip
+$C[3; 5] = min(0 + 0.42 ; 0.05 + 0.18; \textbf{0.22 + 0}) + 0.05 + 0.12 + 0.18= 0.57$\\ \smallskip
+$C[4; 6] = min(0 + 0.24 ; \textbf{0.12 + 0.03}; 0.42 + 0) + 0.12 + 0.18 + 0.03= 0.48$\\ \smallskip
+$C[5; 7] = min(0 + 0.46 ; 0.18 + 0.4 ;\textbf{0.24 + 0}) + 0.18 + 0.03 + 0.4= 0.85$\\
+
+\bigskip
+
+$C[1; 4] = min(\textbf{0 + 0.25} ; 0.21 + 0.22; 0.23 + 0.12;  0.34 + 0) + 0.21 + 0.01 + 0.05 + 0.12= 0.64$\\ \smallskip
+$C[2; 5] = min(0 + 0.57 ; 0.01 + 0.42; \textbf{0.07 + 0.18}; \textbf{0.25 + 0}) + 0.01 + 0.05 + 0.12 + 0.18= 0.61$\\ \smallskip
+$C[3; 6] = min(0 + 0.42 ; 0.05 + 0.24; \textbf{0.22 + 0.03}; 0.57 + 0) + 0.05 + 0.12 + 0.18 + 0.03= 0.63$\\ \smallskip
+$C[4; 7] = min(0 + 0.85 ; 0.12 + 0.46; 0.42 + 0.4 ;\textbf{ 0.48 + 0}) + 0.12 + 0.18 + 0.03 + 0.4 = 1.21$\\
+
+\bigskip
+
+$C[1; 5] = min(0 + 0.61 ; 0.21 + 0.57; 0.23 + 0.42; \textbf{0.34 + 0.18} ; 0.64+0) + 0.21 + 0.01 + 0.05 + 0.12 + 0.18 = 1.09$\\ \smallskip
+$C[2; 6] = min(0 + 0.63 ; 0.01 + 0.48; 0.07 + 0.24; \textbf{0.25 + 0.03}; 0.61 +0) + 0.01 + 0.05 + 0.12 + 0.18 +0.03= 0.67$\\ \smallskip
+$C[3; 7] = min(0 + 1.21 ; 0.05 + 0.85; 0.22 + 0.45; 0.57+0.4; \textbf{0.63 + 0}) + 0.05 + 0.12 + 0.18 + 0.03+ 0.4= 1.41$\\
+
+\bigskip
+
+$C[1; 6] = min(0 + 0.67 ; 0.21 + 0.63; 0.23 + 0.48; \textbf{0.34 + 0.24} ; 0.64+0.03; 1.09 + 0) + 0.21 + 0.01 + 0.05 + 0.12 + 0.18 + 0.03= 1.18$\\ \smallskip
+$C[2; 7] = min(0 + 1.41 ; 0.01 + 1.21; 0.07 + 0.85; 0.25 + 0.46; 0.61 +0.4; \textbf{0.67+0}) + 0.01 + 0.05 + 0.12 + 0.18 +0.03 + 0.4= 1.46$\\
+
+
+\bigskip
+
+$C[1; 6] = min(0 + 0.67 ; 0.21 + 1.41; 0.23 + 1.21; 0.34 + 0.85 ;\textbf{ 0.64+0.46}; 1.09 + 0.4 ; 1.18 + 0) + 0.21 + 0.01 + 0.05 + 0.12 + 0.18 + 0.03 + 0.4= 2.1$\\ 
+
+\begin{center}
+Matrice C : \\ \smallskip
+\begin{tabular}{ |c| c| c| c |c |c |c |c | c|}
+ \hline 
+ 
+& 0 & 1 & 2 & 3 & 4  & 5 & 6 & 7  \\ 
+ \hline 
+ \hline
+1 & 0 & 0.21 & 0.23 & 0.34  & 0.64 & 1.09 & 1.18 &2.1\\
+2 &  & 0 & 0.01 & 0.07  & 0.25 & 0.61 & 0.67 &1.46\\
+3 &  &  & 0 & 0.05  & 0.22 & 0.57 & 0.63 &1.41\\
+4 &  &  &  & 0  & 0.12 & 0.42 & 0.48 &1.21\\
+5 &  &  &  &   & 0 & 0.18 & 0.24 & 0.85\\
+6 & &  &  &   &  & 0 & 0.03 & 0.46\\
+7 &  & &  &   &  &  & 0 & 0.4\\
+8 &  &  &  &  &  &  &  &0 \\
+
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+Matrice  racine:\\
+\smallskip
+\begin{tabular}{ |c| c| c| c |c |c |c |c | c|}
+ \hline 
+ 
+& 0 & 1 & 2 & 3 & 4  & 5 & 6 & 7  \\ 
+ \hline 
+ \hline
+1 & 0 & 1 & 1 & 1  & 1 & 4 & 4 &5\\
+2 &  & 0 & 2 & 3  & 4 & 4/5 & 5 &7\\
+3 &  &  & 0 & 3  & 4 & 5 & 5 &7\\
+4 &  &  &  & 0  & 4 & 5 & 5 &7\\
+5 &  &  &  &   & 0 & 5 & 5 & 7\\
+6 & &  &  &   &  & 0 & 6 &7\\
+7 &  & &  &   &  &  & 0 & 7\\
+8 &  &  &  &  &  &  &  &0 \\
+
+  \hline 
+\end{tabular}
+\end{center}
+\underline{Arbre de recherche optimal} :
+
 \begin{center}
 
 
@@ -92,20 +179,27 @@ Nom : \underline{????} \hfill{}Code permanent : \underline{????}
 \begin{forest}
   for tree={child anchor=north}
    [ 	[\texttt{$5$:$0,\!18$},no edge,treenode 
-      		[\texttt{$2$:$0,\!25$},treenode,edge 
-        		[\texttt{$1$:$0,\!1$},treenode,edge ]
+      		[\texttt{$1$:$0,\!21$},treenode,edge 
+        		[\texttt{}, no edge]
       			[\texttt{$4$:$0,\!12$},treenode,edge 
-      				[\texttt{$3$:$0,\!05$},treenode,edge ]
-      				[\texttt{}, no edge]
+      				[\texttt{$3$:$0,\!05$},treenode,edge 
+      				  [\texttt{$2$:$0,\!01$}, treenode, edge]
+                            [\texttt{}, no edge]
+                            ]
+                        [\texttt{}, no edge]
       			]
       		]
-      		[\texttt{$6$:$0,\!3$},treenode,edge ]
+      		[\texttt{$7$:$0,\!4$},treenode,edge 
+                    [\texttt{$6$:$0,\!03$}, treenode, edge]
+                    [\texttt{}, no edge]
+                    ]
     	]
     ]
   \end{forest}
 \end{center}
 
-
+\underline{Espérance du temps de recherche} : 2,1.
+\newpage
 
 \underline{Exercice 2} \textbf{(25 points)}
 
@@ -122,17 +216,172 @@ Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\
 \end{tabular}
 \end{center}
 
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+ & & & 1 & & & & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+ & & 2 & 1 & & & & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 1 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & & & & & & & & \\   
+ & & 2 & 1 & & & & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & {\color{magenta}4} & & & & & & & \\   
+ & & 2 & 1 & & & & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & {\color{magenta}4} & & & & & & & \\   
+ & & 2 & 1 & 5 & & & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & {\color{magenta}4} & & & & & & & \\   
+ & & 2 & 1 & 5 & 6& & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 4 & 5 & 5 & 5 & 5 & 5 & 5 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & {\color{magenta}4} & & & & & & & \\   
+ & {\color{magenta}7}& 2 & 1 & 5 & 6& & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 4 & 5 & 5 & 5 & 5 & 5 & 5 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & {\color{magenta}4} & & {\color{magenta}8} & & & & & \\   
+ & {\color{magenta}7}& 2 & 1 & 5 & 6& & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 4 & 5 & 5 & 5 & 5 & 5 & 5 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & {\color{magenta}4} & & {\color{magenta}8} & & & & & \\   
+ & {\color{magenta}7}& 2 & 1 & 5 & 6& 9 & & & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 4 & 5 & 6 & 6 & 6 & 6 & 6 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c| c c c c c c c c  c c |}
+ \hline 
+&  & 3 & {\color{magenta}4} & & {\color{magenta}8} & & & & & \\   
+ & {\color{magenta}7}& 2 & 1 & 5 & 6& 9 & & 10 & & \\ 
+Tâche & 1 & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10 \\ 
+ \hline 
+Échéance & 3 & 2 & 2 & 3  & 4 & 5 & 1 & 5 & 6 & 8  \\
+ \hline
+ $N_{i}(F)$ & 0 & 2 & 3 & 4 & 5 & 6 & 6 & 7 & 7 & 7 \\
+ 
+  \hline 
+\end{tabular}
+\end{center}
 
 \bigskip
-\bigskip
 
+\textbf{Ordonnancement optimal} : 3 2 1 5 6 9 10 {\color{magenta} 7} {\color{magenta} 4} {\color{magenta} 8}
+
+\textbf{Pénalité} : 60 + 40 + 30 = 130
+
+\newpage
 
 \underline{Exercice 3} \textbf{(25 points)}
  
 $$\left(\left( x_1 \rightarrow   x_2 \right) \land   x_1 \right)   \lor \lnot x_2 .$$
+ \bigskip
+ 
+ \underline{Étape 1} : 
+ 
+ \bigskip
 
-
-
+ \begin{center}
 \forestset{
     treenode/.style = {circle, draw, base=top},
     payoff/.style   = {align=center, base=top}
@@ -140,109 +389,309 @@ $$\left(\left( x_1 \rightarrow   x_2 \right) \land   x_1 \right)   \lor \lnot x_
 
  \begin{forest}
   for tree={child anchor=north,minimum size=8 mm}
-   [ 	[$\lnot$, edge label={node[midway, right]{$y_1$}},treenode  
-      		[$\lnot x_2$]
-      		[$\lor$,treenode,edge label={node[below = -0.15cm,right]{$y_2$}}
+   [ 	[$\lor$, edge label={node[midway, right]{$y_1$}},treenode  
+      		[$\land$,treenode,edge label={node[below = -0.15cm,left]{$y_2$}}
         		[$\to$,treenode,edge label={node[below = -0.15cm,left]{$y_3$}}
-					[$\lnot x_2$]
-        			[$ x_1$]        		
+					[$ x_1$]
+        			[$ x_2$]        		
         		]
-        		[$\land$,treenode,edge label={node[below = -0.15cm,right]{$y_4$}}
-        			[$ x_3$]
-        			[$\lnot x_4$]  
-        		]
+        		[$ x_1$]
       		]
+                [$\lnot x_2$]
     	]
     ]
   \end{forest}
+\end{center}
+
+\begin{center}
+    $\phi_1^{'} = y_1$
+
+    $\phi_2^{'}= y_1 \leftrightarrow (y_2 \lor \lnot x_2)$
+
+    $\phi_3^{'}= y_2 \leftrightarrow (y_3 \land x_1)$
+
+    $\phi_4^{'}= y_3 \leftrightarrow (x_1 \rightarrow x_2)$
+\end{center}
+
+\smallskip
+
+$\phi^{'} = y_1 \land (y_1 \leftrightarrow (y_2 \lor \lnot x_2)) \land (2 \leftrightarrow (y_3 \land x_1)) \land (y_3 \leftrightarrow (x_1 \rightarrow x_2))$
+
+\smallskip
+
+$\phi^{'} = \phi_1^{'} \land \phi_2^{'}= y_1 \land \phi_3^{'}= y_1 \land \phi_4^{'}= y_1$
 
 \bigskip
+
+\underline{Étape 2}: 
+
 \bigskip
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c|}
+ \hline 
+ $y_2$ & $y_3$ & $x_1$ & $y_1 \leftrightarrow (y_2 \lor \lnot x_2)$ \\   
+ \hline 
+0 & 0 & 0 & 0 \\
+  \hline 
+0 & 0 & 1 & 1 \\
+  \hline 
+0 & 1 & 0 & 0 \\
+  \hline 
+0 & 1 & 1 & 0 \\
+  \hline 
+1 & 0 & 0 & 1 \\
+  \hline 
+1 & 0 & 1 & 0 \\
+  \hline 
+1 & 1 & 0 & 1 \\
+  \hline 
+1 & 1 & 1 & 1 \\
+  \hline 
+\end{tabular}
+\end{center}
+
+\smallskip
+
+\begin{center}
+    $\lnot \phi_2^{''} = (\lnot y_1 \land \lnot y_2 \land \lnot x_2) \lor (\lnot y_1 \land y_2 \land \lnot x_2) \lor (\lnot y_1 \land y_2 \land x_2) \lor (y_1 \land \lnot y_2 \land \lnot x_2) $ \\
+    $\phi_2^{''} = ( y_1 \lor y_2 \lor x_2) \land ( y_1 \lor \lnot y_2 \lor x_2) \land ( y_1 \lor \lnot y_2 \lor \lnot x_2) \land (\lnot y_1 \lor y_2 \lor x_2) $
+\end{center}
+
+\bigskip
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c|}
+ \hline 
+ $y_1$ & $y_2$ & $x_1$ & $y_2 \leftrightarrow (y_3 \land x_1)$ \\   
+ \hline 
+0 & 0 & 0 & 1 \\
+  \hline 
+0 & 0 & 1 & 1 \\
+  \hline 
+0 & 1 & 0 & 1 \\
+  \hline 
+0 & 1 & 1 & 0 \\
+  \hline 
+1 & 0 & 0 & 0 \\
+  \hline 
+1 & 0 & 1 & 0 \\
+  \hline 
+1 & 1 & 0 & 0 \\
+  \hline 
+1 & 1 & 1 & 1 \\
+  \hline 
+\end{tabular}
+\end{center}
+
+\smallskip
+
+\begin{center}
+    $\lnot \phi_3^{''} = (\lnot y_2 \land \lnot y_3 \land  x_1) \lor (y_2 \land \lnot y_3 \land \lnot x_1) \lor (y_2 \land \lnot y_3 \land x_1) \lor (y_2 \land y_3 \land \lnot x_1) $ \\
+    $\phi_3^{''} = (y_2 \lor y_3 \lor \lnot x_1) \land (\lnot y_2 \lor y_3 \lor x_1) \land (\lnot y_2 \lor y_3 \lor \lnot x_1) \land (\lnot y_2 \lor \lnot y_3 \lor x_1) $
+\end{center}
+
+\bigskip
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c|}
+ \hline 
+ $y_3$ & $x_1$ & $x_2$ & $\phi_4^{'}= y_3 \leftrightarrow (x_1 \rightarrow x_2)$ \\   
+ \hline 
+0 & 0 & 0 & 0 \\
+  \hline 
+0 & 0 & 1 & 0 \\
+  \hline 
+0 & 1 & 0 & 1 \\
+  \hline 
+0 & 1 & 1 & 0 \\
+  \hline 
+1 & 0 & 0 & 1 \\
+  \hline 
+1 & 0 & 1 & 1 \\
+  \hline 
+1 & 1 & 0 & 0 \\
+  \hline 
+1 & 1 & 1 & 1 \\
+  \hline 
+\end{tabular}
+\end{center}
+
+\smallskip
+
+\begin{center}
+    $\lnot \phi_4^{''} = (\lnot y_3 \land x_1 \land \lnot x_1) \lor (\lnot y_3 \land \lnot x_1 \land x_2) \lor (\lnot y_3 \land x_1 \land x_2) \lor (y_3 \land x_1 \land \lnot x_2) $ \\
+    $\phi_4^{''} = (y_3 \lor \lnot x_1 \lor x_1) \land (y_3 \lor x_1 \lor \lnot x_2) \land (y_3 \lor \lnot x_1 \lor \lnot x_2) \land (\lnot y_3 \lor \lnot x_1 \lor x_2) $
+\end{center}
+
+\bigskip
+
+\underline{Etape 3}:
+
+\bigskip
+
+\begin{center}
+    $\phi_1 = \phi_1 = (y_1 \lor z_1 \lor z_2) \land (y_1 \lor \lnot z_1 \lor z_2) \land (y_1 \lor z_1 \lor \lnot z_2) \land (y_1 \lor \lnot z_1 \lor \lnot z_2)$\\
+    \smallskip
+    $\phi_2^{'''} = \phi_2^{''}$\\
+    \smallskip
+    $\phi_3^{'''} = \phi_3^{''}$\\
+    \smallskip
+    $\phi_4^{'''} = \phi_4^{''}$
+\end{center}
+
 
 \newpage
 
 \underline{Exercice 4} \textbf{(25 points)}
 
-
-
-
-
-Par exemple pour $m=3$ et $n=3$, si nous avons en entrée la matrice de salaire $S=\left( \begin{matrix}
-0 & 0 & 0   \\
-15 & 20 & 23  \\
-40 & 35 & 45  \\
-62 & 50 & 55  \\
-\end{matrix}  \right)$, cela signifie que l'entreprise $1$ paye $62$ \$ pour $3$ heures et que l'entreprise 3 paye $45$ \$ pour $2$ heures. On peut dans ce cas calculer assez facilement les matrices $SM$ et $NH$ en considérant toutes les combinaisons possibles et on obtient : 
-
-
-
-
-$$SM=\left( \begin{matrix}
-0 & 0 & 0  \\
-15 & 20 & 23  \\
-40 & 40 & 45  \\
- 62& 62 & 65  \\
-\end{matrix}  \right) \,\,\,  \,\,\,  \,\,\,  \,\,\, NH=\left( \begin{matrix}
-0 & 0 & 0   \\
- 1& 1 & 1  \\
-2 &0 & 2  \\
-3 & 0 & 2  \\
-\end{matrix}  \right).  $$
-
-Le revenu maximal est ainsi de $65$ \$ pour 2 heures de travail dans l'entreprise $3$ et $1$ heure de travail dans l'entreprise $2$. De manière plus générale, les matrices $SM$ et $NH$ peuvent être calculées selon le schéma dynamique suivant.
-
-\smallskip
-
-\underline{\bf Initialisation} : \hspace{0.44 cm} Pour tout entier  $1\leq j \leq n$, $SM[0][j]=NH[0][j]=0$.
-
-\smallskip
-
-\hspace{3.32 cm} Pour tout entier  $1\leq i \leq m$, $SM[i][1]=S[i][1]$ et $NH[i][1]=i$.
-
-
-\medskip
-
-\underline{\bf Schéma récursif} : Pour tout entier  $1 \leq i \leq m$ et pour tout entier  $2 \leq j \leq n$, on a :
-
-\smallskip
-
-\hspace{3.32 cm} $SM[i][j]=\max_{0\leq k \leq i}\left(SM[i-k][j-1]+S[k][j]  \right)$,
-
-\smallskip
-
-
-\hspace{3.32 cm} $NH[i][j]$ est égal à l'indice $k$ qui donne la valeur maximale dans la formule
-
- \hspace{3.32 cm} ci-dessus.
-
-\bigskip
-Le coefficient $SM[m][n]$ est alors égal au revenu maximal, et le coefficient $NH[m][n]$ est égal au nombre d'heures qu'il faut travailler dans l'entreprise $n$ pour obtenir ce revenu maximal.
-
-\bigskip
-
-\textbf{\underline{Questions}} : 
-
 \begin{enumerate}[label=\Roman*.]
 
-\item Déterminer les matrices $SM$ et $NH$ \textbf{en utilisant les formules ci-dessus},  si on a en entrée la matrice  suivante (pour $m=5$ heures de travail et $n=4$ entreprises):
+\item 
+\underline{Ligne 1} :
+\smallskip
 
+$SM[1][2]:$\\
+pour $k=0$, $SM[1][2]= [1][1] + S[0][2] = 15+0 = 15$ \\
+pour $k=1$, $SM[1][2]= [0][1] + S[1][2] = 0+ 20 = \underline{20}$ \\
+\smallskip
 
+$SM[1][3]:$\\
+pour $k=0$, $SM[1][3]= [1][2] + S[0][3] = 20 +0 = \underline{20}$ \\
+pour $k=1$, $SM[1][3]= [0][2] + S[1][3] = 0+ 18 = 18$ \\
+\smallskip
 
-$$S=\left( \begin{matrix}
+$SM[1][4]:$\\
+pour $k=0$, $SM[1][4]= [1][3] + S[0][3] = 20+0 = 15$ \\
+pour $k=1$, $SM[1][4]= [0][3] + S[1][3] = 0+ 25 = \underline{25}$ \\
+\smallskip
+
+ \underline{Ligne 2} : 
+ 
+ \smallskip
+
+ $SM[2][2]:$\\
+pour $k=0$, $SM[2][2]= [2][1] + S[0][2] = 30+0 = 30$ \\
+pour $k=1$, $SM[2][2]= [1][1] + S[1][2] = 15+ 20 = 35$ \\
+pour $k=2$, $SM[2][2]= [0][1] + S[2][2] = 0+ 40 = \underline{40}$ \\
+\smallskip
+
+$SM[2][3]:$\\
+pour $k=0$, $SM[2][3]= [2][2] + S[0][3] = 40 +0 = \underline{40}$ \\
+pour $k=1$, $SM[2][3]= [1][2] + S[1][3] = 20+ 18 = 38$ \\
+pour $k=2$, $SM[2][3]= [0][2] + S[2][3] = 0+ 38 = 38$ \\
+\smallskip
+
+$SM[2][4]:$\\
+pour $k=0$, $SM[2][4]= [2][3] + S[0][4] = 40+0 = 40$ \\
+pour $k=1$, $SM[2][4]= [1][3] + S[1][4] = 20+ 25 = \underline{45}$ \\
+pour $k=2$, $SM[2][4]= [0][3] + S[2][4] = 0+ 35 = 35$ \\
+\smallskip
+
+ \underline{Ligne 3} : 
+ 
+ \smallskip
+
+ $SM[3][2]:$\\
+pour $k=0$, $SM[3][2]= [3][1] + S[0][2] = 45+0 = 45$ \\
+pour $k=1$, $SM[3][2]= [2][1] + S[1][2] = 30+ 20 = 50$ \\
+pour $k=2$, $SM[3][2]= [1][1] + S[2][2] = 15+ 40 = \underline{55}$ \\
+pour $k=3$, $SM[3][2]= [0][1] + S[3][2] = 0+ 54 = 54$ \\
+\smallskip
+
+$SM[3][3]:$\\
+pour $k=0$, $SM[3][3]= [3][2] + S[0][3] = 55 +0 = \underline{55}$ \\
+pour $k=1$, $SM[3][3]= [2][2] + S[1][3] = 40+ 18 = 58$ \\
+pour $k=2$, $SM[3][3]= [1][2] + S[2][3] = 20+ 38 = 58$ \\
+pour $k=3$, $SM[3][3]= [0][2] + S[3][3] = 0+ 59 = \underline{59}$ \\
+\smallskip
+
+$SM[3][4]:$\\
+pour $k=0$, $SM[3][4]= [3][3] + S[0][4] = 59+0 = 59$ \\
+pour $k=1$, $SM[3][4]= [2][3] + S[1][4] = 40+ 25 = \underline{65}$ \\
+pour $k=2$, $SM[3][4]= [1][3] + S[2][4] = 20+ 35 = 55$ \\
+pour $k=3$, $SM[3][4]= [0][3] + S[3][4] = 0+ 47 = 47$ \\
+\smallskip
+
+ \underline{Ligne 4} : 
+ 
+ \smallskip
+
+ $SM[4][2]:$\\
+pour $k=0$, $SM[4][2]= [4][1] + S[0][2] = 60+0 = 60$ \\
+pour $k=1$, $SM[4][2]= [3][1] + S[1][2] = 45+ 20 = 65$ \\
+pour $k=2$, $SM[4][2]= [2][1] + S[2][2] = 30+ 40 = \underline{70}$ \\
+pour $k=3$, $SM[4][2]= [1][1] + S[3][2] = 15+ 54 = 69$ \\
+pour $k=4$, $SM[4][2]= [0][1] + S[4][2] = 0+ 65 = 65$ \\
+\smallskip
+
+$SM[4][3]:$\\
+pour $k=0$, $SM[4][3]= [4][2] + S[0][3] = 70 +0 = 70$ \\
+pour $k=1$, $SM[4][3]= [3][2] + S[1][3] = 55+ 18 = 73$ \\
+pour $k=2$, $SM[4][3]= [2][2] + S[2][3] = 40+ 38 = 78$ \\
+pour $k=3$, $SM[4][3]= [1][2] + S[3][3] = 20+ 59 = \underline{79}$ \\
+pour $k=4$, $SM[4][3]= [0][2] + S[4][3] = 0+ 68 = 68$ \\
+\smallskip
+
+$SM[4][4]:$\\
+pour $k=0$, $SM[4][4]= [4][3] + S[0][4] = 79+0 = 59$ \\
+pour $k=1$, $SM[4][4]= [3][3] + S[1][4] = 59+ 25 = \underline{84}$ \\
+pour $k=2$, $SM[4][4]= [2][3] + S[2][4] = 40+ 35 = 75$ \\
+pour $k=3$, $SM[4][4]= [1][3] + S[3][4] = 20+ 47 = 67$ \\
+pour $k=4$, $SM[4][4]= [0][3] + S[4][4] = 0+ 69 = 69$ \\
+\smallskip
+
+ \underline{Ligne 5} : 
+ 
+ \smallskip
+
+ $SM[5][2]:$\\
+pour $k=0$, $SM[5][2]= [5][1] + S[0][2] = 75+0 = 75$ \\
+pour $k=1$, $SM[5][2]= [4][1] + S[1][2] = 60+ 20 = 80$ \\
+pour $k=2$, $SM[5][2]= [3][1] + S[2][2] = 45+ 40 = \underline{85}$ \\
+pour $k=3$, $SM[5][2]= [2][1] + S[3][2] = 30+ 54 = 84$ \\
+pour $k=4$, $SM[5][2]= [1][1] + S[4][2] = 15+ 55 = 80$ \\
+pour $k=5$, $SM[5][2]= [0][1] + S[5][2] = 0+ 70 = 70$ \\
+\smallskip
+
+$SM[5][3]:$\\
+pour $k=0$, $SM[5][3]= [5][2] + S[0][3] = 85 +0 = 85$ \\
+pour $k=1$, $SM[5][3]= [4][2] + S[1][3] = 70+ 18 = 88$ \\
+pour $k=2$, $SM[5][3]= [3][2] + S[2][3] = 55+ 38 = 83$ \\
+pour $k=3$, $SM[5][3]= [2][2] + S[3][3] = 40+ 59 = \underline{99}$ \\
+pour $k=4$, $SM[5][3]= [1][2] + S[4][3] = 20+ 68 = 88$ \\
+pour $k=5$, $SM[5][3]= [0][2] + S[5][3] = 0+ 78 = 78$ \\
+\smallskip
+
+$SM[5][4]:$\\
+pour $k=0$, $SM[5][4]= [5][3] + S[0][4] = 99+0 = 99$ \\
+pour $k=1$, $SM[5][4]= [4][3] + S[1][4] = 79+ 25 = \underline{104}$ \\
+pour $k=2$, $SM[5][4]= [3][3] + S[2][4] = 59+ 35 = 94$ \\
+pour $k=3$, $SM[5][4]= [2][3] + S[3][4] = 40+ 47 = 87$ \\
+pour $k=4$, $SM[5][4]= [1][3] + S[4][4] = 20+ 69 = 89$ \\
+pour $k=5$, $SM[5][4]= [0][3] + S[5][4] = 0+ 80 = 80$ \\
+\smallskip
+
+\bigskip
+
+$$SM=\left( \begin{matrix}
 0& 0& 0 & 0   \\
-15& 20& 18 & 25   \\
-30& 40& 38 & 35   \\
-45& 54& 59 & 47   \\
-60& 65& 68 & 69   \\
-75& 70& 78 & 80   \\
-\end{matrix}  \right).$$
+15& 20& 20 & 25   \\
+30& 40& 40 & 45   \\
+45& 55& 59 & 65   \\
+60& 70& 79 & 84   \\
+75& 85& 99 & 104   \\
+\end{matrix}  \right) \,\,\,\,  \,\,\,\,  \,\,\,\,  \,\,\,\, NH=\left( \begin{matrix}
+0& 0& 0 & 0   \\
+1& 1& 0 & 1   \\
+2& 2& 0 & 1   \\
+3& 2& 3 & 1   \\
+4& 2& 3 & 1   \\
+5& 2& 3 & 1   \\
+\end{matrix}  \right).  $$
 
-\textbf{Vous devez expliciter tous les détails de vos calculs.}
-
-\item En déduire le revenu maximal et le nombre d'heures qu'il faut travailler dans chacune des entreprises pour obtenir ce revenu maximal.
-
-\textbf{Vous devez notamment expliquer comment vous obtenez le nombre d'heures travaillées dans chaque entreprise à partir de la matrice $NH$.}
-
+\item Le revenu maximal est de 104\$ pour 1 heure de travail dans l'entreprise 4, 3 heures dans l'entreprise 3 et 2 dans l'entreprise 2.
+Selon la matrice $NH$, on doit regarder les dernières non nulles de chaque colonne. Cela correspond au nombre d'heures que l'étudiant doit travailler dans chaque entreprise pour un revenu maximal.
 \end{enumerate}
 
 

