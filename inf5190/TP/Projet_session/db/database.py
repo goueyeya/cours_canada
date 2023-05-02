@@ -261,4 +261,6 @@ class Database:
                        "on image.email_user = user.email where email = ?;",
                        (email, ))
         id_img = cursor.fetchone()
+        if id_img is None:
+            return None
         return id_img[0]
